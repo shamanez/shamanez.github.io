@@ -1,0 +1,91 @@
+{
+  "source": "scholar",
+  "profile": "https://scholar.google.com/citations?user=8TAf2IMAAAAJ&hl=en&sortby=pubdate&pagesize=20",
+  "fetchedAt": "2026-10-06T03:46:44.825Z",
+  "publications": [
+    {
+      "title": "Communication-Efficient LLM Adaptation over Decentralized GPU Meshes",
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=8TAf2IMAAAAJ&sortby=pubdate&citation_for_view=8TAf2IMAAAAJ:_Qo2XoVZTnwC",
+      "authors": "S Ramasinghe, S Siriwardhana, T Ajanthan, HM Dolatabadi, ...",
+      "venue": "arXiv preprint arXiv:2609.14339, 2026",
+      "year": "2026"
+    },
+    {
+      "title": "Agora: Collective and Permissionless Internet-Scale Pretraining of Large Language Models",
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=8TAf2IMAAAAJ&sortby=pubdate&citation_for_view=8TAf2IMAAAAJ:HDshCWvjkbEC",
+      "authors": "G Avraham, V Shevchenko, HM Dolatabadi, K Pajak, J Snewin, H Xi, ...",
+      "venue": "arXiv preprint arXiv:2607.13332, 2026",
+      "year": "2026"
+    },
+    {
+      "title": "NuMuon: Nuclear-Norm-Constrained Muon for Compressible LLM Training",
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=8TAf2IMAAAAJ&sortby=pubdate&citation_for_view=8TAf2IMAAAAJ:IWHjjKOFINEC",
+      "authors": "HM Dolatabadi, T Ajanthan, S Ramasinghe, CPH Koneputugodage, ...",
+      "venue": "arXiv preprint arXiv:2603.03597, 2026",
+      "year": "2026"
+    },
+    {
+      "title": "Factored Gossip DiLoCo: Reducing Blocking Communication within DiLoCo",
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=8TAf2IMAAAAJ&sortby=pubdate&citation_for_view=8TAf2IMAAAAJ:hFOr9nPyWt4C",
+      "authors": "CPH Koneputugodage, T Ajanthan, S Ramasinghe, HM Dolatabadi, ...",
+      "venue": "Forty-third International Conference on Machine Learning, 2026",
+      "year": "2026"
+    },
+    {
+      "title": "Can AI models summarize your diary entries? Investigating utility of abstractive summarization for autobiographical text",
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=8TAf2IMAAAAJ&sortby=pubdate&citation_for_view=8TAf2IMAAAAJ:9ZlFYXVOiuMC",
+      "authors": "S Siriwardhana, C Gupta, T Kaluarachchi, V Dissanayake, S Ellawela, ...",
+      "venue": "International Journal of Human–Computer Interaction 40 (24), 8655-8673, 2024",
+      "year": "2024"
+    },
+    {
+      "title": "Arcee’s mergekit: A toolkit for merging large language models",
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=8TAf2IMAAAAJ&sortby=pubdate&citation_for_view=8TAf2IMAAAAJ:QIV2ME_5wuYC",
+      "authors": "C Goddard, S Siriwardhana, M Ehghaghi, L Meyers, V Karpukhin, ...",
+      "venue": "Proceedings of the 2024 Conference on Empirical Methods in Natural Language�…, 2024",
+      "year": "2024"
+    },
+    {
+      "title": "Merging in a bottle: Differentiable adaptive merging (DAM) and the path from averaging to automation",
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=8TAf2IMAAAAJ&sortby=pubdate&citation_for_view=8TAf2IMAAAAJ:L8Ckcad2t8MC",
+      "authors": "T Gauthier-Caron, S Siriwardhana, E Stein, M Ehghaghi, C Goddard, ...",
+      "venue": "arXiv preprint arXiv:2410.08371, 2024",
+      "year": "2024"
+    },
+    {
+      "title": "Domain adaptation of llama3-70b-instruct through continual pre-training and model merging: A comprehensive evaluation",
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=8TAf2IMAAAAJ&sortby=pubdate&citation_for_view=8TAf2IMAAAAJ:dhFuZR0502QC",
+      "authors": "S Siriwardhana, M McQuade, T Gauthier, L Atkins, FF Neto, L Meyers, ...",
+      "venue": "arXiv preprint arXiv:2406.14971, 2024",
+      "year": "2024"
+    },
+    {
+      "title": "A corneal surface reflections-based intelligent system for lifelogging applications",
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=8TAf2IMAAAAJ&sortby=pubdate&citation_for_view=8TAf2IMAAAAJ:Wp0gIr-vW9MC",
+      "authors": "T Kaluarachchi, S Siriwardhana, E Wen, S Nanayakkara",
+      "venue": "International Journal of Human–Computer Interaction 39 (9), 1963-1980, 2023",
+      "year": "2023"
+    },
+    {
+      "title": "Improving the domain adaptation of retrieval augmented generation (RAG) models for open domain question answering",
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=8TAf2IMAAAAJ&sortby=pubdate&citation_for_view=8TAf2IMAAAAJ:M3ejUd6NZC8C",
+      "authors": "S Siriwardhana, R Weerasekera, E Wen, T Kaluarachchi, R Rana, ...",
+      "venue": "Transactions of the Association for Computational Linguistics 11, 1-17, 2023",
+      "year": "2023"
+    },
+    {
+      "title": "Fuse and Adapt: Investigating the Use of Pre-Trained Self-Supervising Learning Models in Limited Data NLU problems",
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=8TAf2IMAAAAJ&sortby=pubdate&citation_for_view=8TAf2IMAAAAJ:ZeXyd9-uunAC",
+      "authors": "S Siriwardhana",
+      "venue": "Auckland Bioengineering Institute, 2022",
+      "year": "2022"
+    },
+    {
+      "title": "Vrhook: A data collection tool for vr motion sickness research",
+      "url": "https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=8TAf2IMAAAAJ&sortby=pubdate&citation_for_view=8TAf2IMAAAAJ:qxL8FJ1GzNcC",
+      "authors": "E Wen, TI Kaluarachchi, S Siriwardhana, V Tang, M Billinghurst, ...",
+      "venue": "Proceedings of the 35th Annual ACM Symposium on User Interface Software and�…, 2022",
+      "year": "2022"
+    }
+  ]
+}

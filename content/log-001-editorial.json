@@ -1,0 +1,181 @@
+{
+  "title": "General Brains, Domain-Adapted Worlds",
+  "sourceDocument": "General Brains, Domain-Adapted Worlds (v2).pdf",
+  "sourceSha256": "54574a336adf7799e7690666bc3a9fbd2b45f9fe8b29ef02d81dff496349e0d0",
+  "publicationDate": "2026-10-05",
+  "refinementDate": "2026-10-06",
+  "userCorrection": "Simulations and digital twins can be improved with world models; they should not be presented as a separate learned-world-model category.",
+  "researchAndEditorialReview": "Completed by a separate agent at the author’s request and reviewed by the Site owner agent.",
+  "editorialNotes": [
+    "Read and extracted all six uploaded PDF pages; the manuscript's seven main sections, central thesis and substantive research examples are retained.",
+    "Corrected the central taxonomy: simulators and digital twins are frameworks/representations that can incorporate and benefit from learned world models; they are not presented as mutually exclusive kinds of learned world model.",
+    "Added concrete simulator/twin augmentation with ReDRAW residual latent dynamics and Cosmos visual synthetic-data generation, separating dynamic fidelity from visual richness.",
+    "Distinguished domain, task and site specificity, prediction-model adaptation from policy adaptation, action-free V-JEPA 2 from action-conditioned V-JEPA 2-AC, and supervisory LLM reasoning from robot execution/control.",
+    "Qualified 'one per site' as the author's architectural bet; it can be a shared base plus adapter or dynamics calibration. V-JEPA 2-AC's zero-shot transfer in two labs and TD-MPC2's multitask transfer do not support claiming dynamics never transfer.",
+    "Removed 'Fable', the asserted language-model duopoly and universal claims that self-hosting/small models are obsolete. Kept the author's personal preference for strong shared general reasoning and local predictive infrastructure.",
+    "Removed unsupported '75% of the economy' and secondary-source software-GDP percentages rather than publishing them as facts.",
+    "Kept the historical METR seven-month finding while specifying its 50%-success benchmark time horizon and human task-time calibration.",
+    "Removed a universal few-hours/minutes data promise. Retained exact <62-hour DROID evidence with its limited robot demonstration scope; SimDist and ReDRAW are described according to their reported tested capabilities.",
+    "Removed blanket claims that generative world models cannot be adapted and that all latent world models skip rendering entirely. Planning/policy learning in latent space is the relevant distinction; Dreamer can train with reconstruction objectives.",
+    "Retained edge latency as the architectural argument, but clarified that the roughly 300M V-JEPA 2-AC predictor is not the entire model and that control-loop performance depends on the full system.",
+    "Changed policy training in world models from an asserted 'safe place' to pre-real-trial training/evaluation; prediction and offline evaluation do not establish physical safety.",
+    "Clarified progress scoring requires goals/rewards/values; a world model does not inherently know task success.",
+    "Verified Atlas, Genie 3, Dreamer 4, the 2026 survey, WorldEvolver, GigaWorld-1, SimDist, ReDRAW and RepWAM against primary or creator sources. WorldEvolver/web-agent evidence is explicitly distinguished from physical-robot evidence.",
+    "Added NIST and NVIDIA primary sources for simulation/twin roles. Original Axios GDP and IEEE overview references were not needed after the clarified primary-source treatment; reference numbering was regenerated.",
+    "The source manuscript publication date is 2026-10-05. The output deliberately leaves publication date placement to the Site template."
+  ],
+  "originalCoverage": [
+    {
+      "originalSection": "Opening thesis",
+      "coverage": "Retained the author's first-person bet that domain adaptation continues in physical world models."
+    },
+    {
+      "originalSection": "From self-supervised foundation models to world models",
+      "coverage": "Retained self-supervision, language-model scaling, Ha/Schmidhuber, Dreamer 3, Genie 3, Dreamer 4 and Atlas; corrected Dreamer algorithm configuration vs a universally shared model."
+    },
+    {
+      "originalSection": "Intelligence is going general",
+      "coverage": "Retained Claude Code/Codex/computer-use context, METR historical improvement and shared-brain deployment argument; removed unsupported current-model naming, duopoly and self-hosting absolutes."
+    },
+    {
+      "originalSection": "Then comes the physical world",
+      "coverage": "Retained physical-economy opportunity, robots, simulators/twins and useful roles for small language models; removed unsupported GDP numbers."
+    },
+    {
+      "originalSection": "Not all world models are the same / taxonomy table",
+      "coverage": "Retained visual/spatial vs latent prediction approaches and original major examples; replaced incorrect exclusive taxonomy with system-role explanation and concrete model augmentation of sim/twin workflows."
+    },
+    {
+      "originalSection": "So this is my concept / shared-brain-three-sites illustration",
+      "coverage": "Retained shared general reasoning/local adaptation, warehouse/surgical/farm examples and all three proposed local-world-model roles; clarified transfer and distinguished task/domain/site/policy specificity. Root can place its existing diagram here with local model→controller plus simulation/twin augmentation."
+    },
+    {
+      "originalSection": "Build paths",
+      "coverage": "Retained Cosmos post-training, V-JEPA 2-AC robot post-training, SimDist and ReDRAW as concrete adaptation routes with correct evidence scope."
+    },
+    {
+      "originalSection": "Why this is the right place to be",
+      "coverage": "Retained all three reasons: local data, latency and selective adaptation, while replacing unsupported ownership and size/control-speed guarantees."
+    },
+    {
+      "originalSection": "What still has to work",
+      "coverage": "Retained compounded errors, rollout horizons, contact/deformable challenges, GigaWorld evaluation, representations via RepWAM and uncertainty/interface via WorldEvolver; distinguished author's desired interface from existing standards."
+    },
+    {
+      "originalSection": "References",
+      "coverage": "Retained 20 original primary/creator references in refreshed form and replaced two broad/secondary references with NIST and NVIDIA evidence for the central correction; 22 linked sources total."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Siriwardhana et al. (2023). Improving the Domain Adaptation of Retrieval Augmented Generation (RAG) Models for Open Domain Question Answering. TACL.",
+      "url": "https://aclanthology.org/2023.tacl-1.1/",
+      "supportedClaim": "The author's RAG-end2end work adapts retrieval and generation jointly to domain-specific knowledge bases."
+    },
+    {
+      "title": "Brown et al. (2020). Language Models are Few-Shot Learners.",
+      "url": "https://arxiv.org/abs/2005.14165",
+      "supportedClaim": "Scaling autoregressive language models improves task-agnostic few-shot performance; GPT-3 is an example."
+    },
+    {
+      "title": "OpenAI (2023). GPT-4 Technical Report.",
+      "url": "https://arxiv.org/abs/2303.08774",
+      "supportedClaim": "GPT-4 is a large-scale multimodal model with broad language and reasoning capabilities, with documented limitations."
+    },
+    {
+      "title": "Ha and Schmidhuber (2018). World Models.",
+      "url": "https://arxiv.org/abs/1803.10122",
+      "supportedClaim": "Learned compressed temporal representations can support policies trained inside imagined environments."
+    },
+    {
+      "title": "Hafner et al. (2025). Mastering diverse control tasks through world models. Nature.",
+      "url": "https://www.nature.com/articles/s41586-025-08744-2",
+      "supportedClaim": "Dreamer 3 learns behaviors through latent imagination and is evaluated on over 150 tasks with one algorithm configuration, not one universally deployed site model."
+    },
+    {
+      "title": "Google DeepMind (2025). Genie 3: A new frontier for world models.",
+      "url": "https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/",
+      "supportedClaim": "Genie 3 generates interactive environments in real time; this is distinct from verified dynamics or guaranteed robot control."
+    },
+    {
+      "title": "Hafner, Yan and Lillicrap (2025). Training Agents Inside of Scalable World Models (Dreamer 4).",
+      "url": "https://arxiv.org/abs/2509.24527",
+      "supportedClaim": "Dreamer 4 learns behaviors in a learned world model from offline Minecraft data, with much of its knowledge extracted from unlabeled video."
+    },
+    {
+      "title": "World Labs (2026). Atlas: A World Model for Spatial Intelligence.",
+      "url": "https://www.worldlabs.ai/blog/atlas",
+      "supportedClaim": "Atlas is presented by its creators as supporting generation, reconstruction and space-time simulation; real site imagery can condition reconstruction."
+    },
+    {
+      "title": "METR (2025). Measuring AI Ability to Complete Long Software Tasks.",
+      "url": "https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/",
+      "supportedClaim": "The study's historical roughly seven-month doubling applies to a 50%-success task time horizon on measured software/reasoning tasks, with time calibrated against human experts."
+    },
+    {
+      "title": "Belcak et al. (2025). Small Language Models are the Future of Agentic AI.",
+      "url": "https://arxiv.org/abs/2506.02153",
+      "supportedClaim": "This position paper argues for small language models in many repeated agent invocations and heterogeneous systems, rather than the end of small models."
+    },
+    {
+      "title": "Hansen, Su and Wang (2024). TD-MPC2: Scalable, Robust World Models for Continuous Control.",
+      "url": "https://arxiv.org/abs/2310.16828",
+      "supportedClaim": "TD-MPC2 performs planning with a learned implicit, decoder-free latent world model and demonstrates cross-domain multitask capabilities."
+    },
+    {
+      "title": "Assran et al. (2025). V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning.",
+      "url": "https://arxiv.org/abs/2506.09985",
+      "supportedClaim": "Action-free video pretraining is distinct from V-JEPA 2-AC, which learns an approximately 300M action-conditioned predictor on a frozen encoder from under 62 hours of DROID robot trajectories; new-lab robot planning is zero-shot, with no target-site training."
+    },
+    {
+      "title": "Taylor et al. (2023). Enhancing Digital Twins with Advances in Simulation and Artificial Intelligence: Opportunities and Challenges. Winter Simulation Conference / NIST.",
+      "url": "https://www.nist.gov/publications/enhancing-digital-twins-advances-simulation-and-artificial-intelligence-opportunities",
+      "supportedClaim": "Simulation investigates physical systems; a digital twin connects a representation/simulation to a physical counterpart, and combining simulation with AI offers additional opportunities."
+    },
+    {
+      "title": "NVIDIA (2025). NVIDIA Launches Cosmos World Foundation Model Platform to Accelerate Physical AI Development.",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-launches-cosmos-world-foundation-model-platform-to-accelerate-physical-ai-development",
+      "supportedClaim": "Cosmos world foundation models can generate photorealistic videos from controlled Omniverse 3D scenarios to augment training/evaluation data; physics fidelity is not thereby guaranteed."
+    },
+    {
+      "title": "Hou et al. (2026). World Model for Robot Learning: A Comprehensive Survey.",
+      "url": "https://arxiv.org/abs/2605.00080",
+      "supportedClaim": "The survey describes world models supporting policy learning, planning, simulation, evaluation and data generation; it does not establish that the article's three application roles are an exhaustive taxonomy."
+    },
+    {
+      "title": "Gu et al. (2025). Is Your LLM Secretly a World Model of the Internet? Model-Based Planning for Web Agents.",
+      "url": "https://arxiv.org/abs/2411.06559",
+      "supportedClaim": "WebDreamer predicts candidate web-action outcomes before execution; the analogy to physical planning is an inference, not robot evidence."
+    },
+    {
+      "title": "Zhang et al. (2026). Self-Evolving World Models for LLM Agent Planning (WorldEvolver).",
+      "url": "https://arxiv.org/abs/2606.30639",
+      "supportedClaim": "WorldEvolver revises deployment-time memory/context and filters low-confidence foresight with frozen model parameters; the experiments are in ALFWorld/ScienceWorld, not physical robot control."
+    },
+    {
+      "title": "GigaWorld Team et al. (2026). GigaWorld-1: A Roadmap to Build World Models for Robot Policy Evaluation.",
+      "url": "https://arxiv.org/abs/2607.02642",
+      "supportedClaim": "World-model policy evaluation requires action-faithful, consistent rollouts over long horizons, beyond visual realism; this is not a proof of real-world safety."
+    },
+    {
+      "title": "NVIDIA et al. (2025). Cosmos World Foundation Model Platform for Physical AI.",
+      "url": "https://arxiv.org/abs/2501.03575",
+      "supportedClaim": "Cosmos provides pretrained world foundation models and examples of application-specific post-training."
+    },
+    {
+      "title": "Levy et al. (2026). Simulation Distillation: Pretraining World Models in Simulation for Rapid Real-World Adaptation (SimDist).",
+      "url": "https://arxiv.org/abs/2603.15759",
+      "supportedClaim": "SimDist pretrains from physics simulation and adapts only latent dynamics while transferring the encoder, reward model and value function; demonstrated tasks include manipulation and quadruped locomotion."
+    },
+    {
+      "title": "Lanier et al. (2026; preprint 2025). Adapting World Models with Latent-State Dynamics Residuals (ReDRAW). L4DC / PMLR.",
+      "url": "https://proceedings.mlr.press/v331/lanier26a.html",
+      "supportedClaim": "ReDRAW corrects a simulation-pretrained latent world model with residual dynamics learned from scarce target data; tests include simulated control and physical robot lane following."
+    },
+    {
+      "title": "Wang et al. (2026). RepWAM: World Action Modeling with Representation Visual-Action Tokenizers.",
+      "url": "https://arxiv.org/abs/2606.13674",
+      "supportedClaim": "RepWAM reports advantages from semantic visual-action tokenization in its evaluated manipulation settings, rather than a universal theorem that semantic representations are always best."
+    }
+  ]
+}
