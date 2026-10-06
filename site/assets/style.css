@@ -150,6 +150,7 @@ html[data-motion=off] .ticker-track[aria-hidden]{display:none}
 .kicker::before{content:'';width:6px;height:6px;background:var(--lime)}
 .section-head h2{font-size:clamp(30px,3.5vw,46px);line-height:1.1;letter-spacing:-.035em;font-weight:440;margin-top:14px;max-width:980px}
 .section-head h2 span{color:var(--fg-3)}
+.section-head h2 .lead-text{color:var(--fg)}
 .section-head .btn{margin-bottom:6px}
 
 /* Story: the topic first, then an animated figure and one line */
@@ -166,6 +167,21 @@ html[data-motion=off] .ticker-track[aria-hidden]{display:none}
 .act.is-next .act-fig{background:repeating-linear-gradient(135deg,rgba(255,255,255,.025) 0 1px,transparent 1px 10px),var(--bg-1)}
 .act.is-next h3::after{content:'';display:inline-block;width:.42em;height:.78em;background:var(--lime);animation:caret 1.05s steps(1) infinite}
 .act.is-next .act-when{color:var(--lime)}
+/* Story direction: plays forward by default, and rewinds from now on request. */
+.story-flip{display:none}
+.js .story-flip{display:inline-flex}
+.story-flip .flip-icon{width:14px;height:14px;transition:transform .6s var(--ease)}
+.story-flip[aria-pressed=true]{background:#fff;color:#000}
+.story-flip[aria-pressed=true]:hover{background:var(--lime)}
+.story-flip[aria-pressed=true] .flip-icon{transform:rotate(180deg)}
+.acts{position:relative;perspective:2200px}
+.acts::after{content:'';position:absolute;left:0;right:0;top:0;z-index:2;height:2px;background:var(--lime);box-shadow:0 0 22px 2px rgba(133,237,117,.55);opacity:0;pointer-events:none}
+.acts.is-turning::after{animation:rewind-scan .9s linear}
+@keyframes rewind-scan{from{top:0;opacity:1}to{top:100%;opacity:0}}
+.acts.is-turning>.act{animation:act-out .34s cubic-bezier(.55,0,.8,.3) both;animation-delay:calc(var(--k,0) * 45ms)}
+.acts.is-landing>.act{animation:act-in .62s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--k,0) * 45ms)}
+@keyframes act-out{to{transform:rotateX(88deg) scale(.94);opacity:0}}
+@keyframes act-in{from{transform:rotateX(-88deg) scale(.94);opacity:0}to{transform:none;opacity:1}}
 .artifacts{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
 .artifact{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.03em;text-transform:uppercase;padding:7px 9px;background:var(--bg-3);border:1px solid var(--line);color:var(--fg-1);transition:border-color .2s,color .2s,background .2s}
 .artifact em{font-style:normal;color:var(--fg-3)}
@@ -192,6 +208,8 @@ html[data-motion=off] .ticker-track[aria-hidden]{display:none}
 .fig .imu-x,.fig .imu-y,.fig .imu-z{fill:none;stroke-width:1.2}
 .fig .imu-x{stroke:rgba(255,255,255,.75)}.fig .imu-y{stroke:rgba(255,255,255,.4)}.fig .imu-z{stroke:var(--act)}
 .imu-scroll{animation:imu-scroll 3.2s linear infinite}
+.lane{animation:lane 3.2s linear infinite}
+@keyframes lane{to{transform:translateX(-120px)}}
 @keyframes imu-scroll{to{transform:translateX(-132px)}}
 .seq{animation:seq 3.2s ease-in-out infinite;animation-delay:calc(var(--d) * .4s - 3.2s)}
 @keyframes seq{0%,34%,100%{opacity:.18}8%,22%{opacity:1}}

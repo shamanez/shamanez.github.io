@@ -105,6 +105,51 @@
   observe(figures, entry => { entry.target.classList.toggle('is-playing', entry.isIntersecting); syncFigure(entry.target); }, { rootMargin: '60px' });
   motionListeners.push(() => figures.forEach(syncFigure));
 
+  /* Story direction: play forward from the start, or rewind from now. The cards turn over, then land in the new order. */
+  const acts = document.querySelector('.acts');
+  const flip = document.querySelector('.story-flip');
+  if (acts && flip) {
+    const lead = document.querySelector('#story-title .lead-text');
+    const sub = document.querySelector('#story-title .sub-text');
+    const label = flip.querySelector('.flip-label');
+    const glyphs = '01<>/#%&*+=';
+    const scramble = (element, text) => {
+      if (!moving) { element.textContent = text; return; }
+      const begin = performance.now();
+      const step = now => {
+        const progress = Math.min(1, (now - begin) / 560);
+        const settled = Math.floor(text.length * progress);
+        element.textContent = text.slice(0, settled) + text.slice(settled).replace(/\S/g, () => glyphs[Math.floor(Math.random() * glyphs.length)]);
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    const number = () => [...acts.children].forEach((card, index) => card.style.setProperty('--k', index));
+    let busy = false;
+    flip.addEventListener('click', () => {
+      if (busy) return;
+      const rewind = flip.getAttribute('aria-pressed') !== 'true';
+      const turn = () => {
+        [...acts.children].reverse().forEach(card => acts.appendChild(card));
+        number();
+        flip.setAttribute('aria-pressed', String(rewind));
+        label.textContent = rewind ? 'Play from the start' : 'Rewind from now';
+        scramble(lead, rewind ? lead.dataset.rewind : lead.dataset.forward);
+        sub.textContent = rewind ? sub.dataset.rewind : sub.dataset.forward;
+      };
+      if (!moving) { turn(); return; }
+      busy = true;
+      number();
+      acts.classList.add('is-turning');
+      setTimeout(() => {
+        turn();
+        acts.classList.remove('is-turning');
+        acts.classList.add('is-landing');
+        setTimeout(() => { acts.classList.remove('is-landing'); busy = false; }, acts.children.length * 45 + 640);
+      }, acts.children.length * 45 + 360);
+    });
+  }
+
   /* Research timeline, built from the publication list itself. */
   const driftHost = document.getElementById('drift');
   if (driftHost) {
