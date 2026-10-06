@@ -151,7 +151,7 @@
       svg?.remove();
       svg = make('svg', { viewBox: `0 0 ${width} ${height}`, preserveAspectRatio: 'none' });
       const compact = width < 720;
-      const left = compact ? 44 : 196, right = compact ? 18 : 34, top = 26, bottom = 40;
+      const left = compact ? 16 : 196, right = compact ? 18 : 34, top = compact ? 34 : 26, bottom = 40;
       const laneHeight = (height - top - bottom) / clusters.length;
       const t0 = 2017.75, t1 = 2027.1;
       const x = time => left + (time - t0) / (t1 - t0) * (width - left - right);
@@ -164,9 +164,10 @@
         const y = laneY(index + 1);
         make('line', { class: 'lane-line', x1: left, x2: width - right, y1: y, y2: y }, svg);
         const color = getComputedStyle(cluster).getPropertyValue('--c').trim();
-        make('rect', { x: 14, y: y - 4, width: 7, height: 7, fill: color }, svg);
-        const label = make('text', { x: 28, y: y + 3.5, class: 'lane-name' }, svg);
-        label.textContent = compact ? `C${cluster.dataset.lane}` : `C${cluster.dataset.lane}  ${cluster.dataset.short}`;
+        const labelY = compact ? y - laneHeight * 0.36 : y;
+        make('rect', { x: 14, y: labelY - 4, width: 7, height: 7, fill: color }, svg);
+        const label = make('text', { x: 28, y: labelY + 3.5, class: 'lane-name' }, svg);
+        label.textContent = cluster.dataset.short.replace('&amp;', '&');
       });
       const now = x(2026.8);
       make('line', { class: 'now', x1: now, x2: now, y1: top - 14, y2: height - bottom + 6 }, svg);
@@ -208,16 +209,17 @@
     const baseContext = base.getContext('2d'), context = fx.getContext('2d');
     if (!hero || !baseContext || !context) return;
     const LAT_TOP = 84, RES = 0.5;
-    const AREA = { lon0: 58, lon1: 248, lat0: 50, lat1: -50 };
+    const AREA = { lon0: 64, lon1: 296, lat0: 50, lat1: -50 };
     const LIME = '133,237,117';
     const PLACES = {
       lk: { name: 'Sri Lanka', note: '2013', lat: 7.29, lon: 80.63, side: -1, dy: -14 },
       sg: { name: 'Singapore', note: '2017', lat: 1.35, lon: 103.82, side: 1, dy: 16 },
       akl: { name: 'Auckland', note: '2018', lat: -36.85, lon: 174.76, side: 1, dy: 16 },
+      fl: { name: 'Florida', note: 'remote', lat: 27.8, lon: 278.4, side: -1, dy: 16 },
       sf: { name: 'San Francisco', note: 'remote', lat: 37.77, lon: 237.58, side: -1, dy: -12 },
       mel: { name: 'Melbourne', note: 'now', lat: -37.81, lon: 144.96, side: -1, dy: 18 },
     };
-    const ROUTES = [['lk', 'sg'], ['sg', 'akl'], ['akl', 'sf', true], ['akl', 'mel']];
+    const ROUTES = [['lk', 'sg'], ['sg', 'akl'], ['akl', 'fl', true], ['akl', 'sf', true], ['akl', 'mel']];
     let mask = null, maskWidth = 0, maskHeight = 0;
     let width = 0, height = 0, ratio = 1, k = 1, originX = 0, originY = 0, spacing = 7, dotSize = 2;
     let dots = [], columns = [], routes = [], peers = [], region = null, avoid = null;

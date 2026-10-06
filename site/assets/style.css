@@ -91,7 +91,7 @@ a:hover>.arr,a:hover .arr{transform:translate(2px,-2px)}
 @keyframes wash{0%,18%,100%{background-position:125% 0}54%,72%{background-position:-45% 0}}
 .hero-lede{font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:var(--fg-2);margin-top:24px;max-width:500px}
 .hero-lede strong{color:var(--fg);font-weight:500}
-.hero-cta{display:flex;gap:6px;flex-wrap:wrap;margin-top:30px}
+.hero-cta{display:flex;gap:6px;flex-wrap:wrap;margin-top:28px}
 .terminal{display:flex;align-items:center;gap:9px;font-variant-ligatures:none;min-height:22px;margin-top:26px;font-family:var(--mono);font-size:13px;color:var(--fg-1)}
 .terminal .prompt{color:var(--lime)}
 .terminal .typed{white-space:pre}
@@ -131,9 +131,10 @@ html[data-motion=off] .ticker-track[aria-hidden]{display:none}
 /* Where the work happened */
 .orgs{padding-top:28px}
 .orgs-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 16px;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--fg-3)}
+.orgs-head a{color:var(--fg-2);transition:color .2s}
+.orgs-head a:hover{color:var(--lime)}
 .org-grid{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:12px}
 .org-keys{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--lime);margin-top:2px}
-.org-more .org-name{color:var(--fg-2)}
 .org{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:118px;padding:28px 12px 18px;text-align:center;transition:background .25s}
 .org-name{font-size:19px;font-weight:500;letter-spacing:-.02em;color:var(--fg-1);transition:color .2s}
 .org-role{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--fg-3)}
@@ -151,20 +152,20 @@ html[data-motion=off] .ticker-track[aria-hidden]{display:none}
 .section-head h2 span{color:var(--fg-3)}
 .section-head .btn{margin-bottom:6px}
 
-/* Story: one animated figure and one line per chapter */
+/* Story: the topic first, then an animated figure and one line */
 .acts{grid-template-columns:repeat(2,minmax(0,1fr))}
 .act{display:flex;flex-direction:column;min-width:0;scroll-margin-top:calc(var(--nav-h) + 12px)}
-.act-fig{position:relative;display:flex;align-items:center;justify-content:center;min-height:330px;padding:48px 26px 30px;border-bottom:1px solid var(--line);background:radial-gradient(circle,rgba(255,255,255,.075) 1px,transparent 1.3px) 0 0/16px 16px,var(--bg-1);overflow:hidden}
-.fig-label{position:absolute;top:14px;left:16px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3)}
-.fig-label.right{left:auto;right:16px;color:var(--fg-1)}
-.act-fig svg{width:100%;max-width:440px;height:auto;overflow:visible}
-.act-info{display:flex;flex-direction:column;gap:10px;flex:1;padding:22px 24px 26px}
-.act h3{display:flex;align-items:baseline;gap:12px;font-size:clamp(26px,2.4vw,34px);line-height:1.1;letter-spacing:-.035em;font-weight:440}
-.act h3 .num{font-family:var(--mono);font-size:12px;letter-spacing:0;color:var(--act);font-weight:400;transform:translateY(-.6em)}
-.act-line{font-size:16.5px;line-height:1.5;color:var(--fg-2);max-width:520px}
+.act-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 18px;padding:22px 24px 20px;border-bottom:1px solid var(--line)}
+.act-head h3{display:flex;align-items:center;gap:12px;font-size:clamp(24px,2.2vw,31px);line-height:1.1;letter-spacing:-.035em;font-weight:440}
+.act-head h3::before{content:'';flex:none;width:10px;height:10px;background:var(--act)}
+.act-when{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);white-space:nowrap}
+.act-fig{position:relative;display:flex;align-items:center;justify-content:center;min-height:300px;padding:26px 24px;border-bottom:1px solid var(--line);background:radial-gradient(circle,rgba(255,255,255,.075) 1px,transparent 1.3px) 0 0/16px 16px,var(--bg-1);overflow:hidden}
+.act-fig svg{width:100%;max-width:450px;height:auto;overflow:visible}
+.act-info{display:flex;flex-direction:column;gap:12px;flex:1;padding:20px 24px 24px}
+.act-line{font-size:16px;line-height:1.55;color:var(--fg-2);max-width:540px}
 .act.is-next .act-fig{background:repeating-linear-gradient(135deg,rgba(255,255,255,.025) 0 1px,transparent 1px 10px),var(--bg-1)}
-.act.is-next h3::after{content:'';display:inline-block;width:.42em;height:.78em;margin-left:.08em;background:var(--lime);animation:caret 1.05s steps(1) infinite;transform:translateY(.06em)}
-.act.is-next .fig-label.right{color:var(--lime)}
+.act.is-next h3::after{content:'';display:inline-block;width:.42em;height:.78em;background:var(--lime);animation:caret 1.05s steps(1) infinite}
+.act.is-next .act-when{color:var(--lime)}
 .artifacts{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
 .artifact{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.03em;text-transform:uppercase;padding:7px 9px;background:var(--bg-3);border:1px solid var(--line);color:var(--fg-1);transition:border-color .2s,color .2s,background .2s}
 .artifact em{font-style:normal;color:var(--fg-3)}
@@ -174,6 +175,7 @@ html[data-motion=off] .ticker-track[aria-hidden]{display:none}
 .fig .stroke{fill:none;stroke:rgba(255,255,255,.28);stroke-width:1}
 .fig .stroke-2{fill:none;stroke:rgba(255,255,255,.14);stroke-width:1}
 .fig .dash{fill:none;stroke:rgba(255,255,255,.3);stroke-width:1;stroke-dasharray:3 4}
+.fig .dash-hi{fill:none;stroke:rgba(255,255,255,.62);stroke-width:1.2;stroke-dasharray:3 3}
 .fig .accent{fill:none;stroke:var(--act);stroke-width:1.25}
 .fig .fill-accent{fill:var(--act)}
 .fig .fill-dim{fill:rgba(255,255,255,.16)}
@@ -184,6 +186,65 @@ html[data-motion=off] .ticker-track[aria-hidden]{display:none}
 .fig text.hi{fill:#fff}
 .fig text.acc{fill:var(--act)}
 .fig text.case{text-transform:none;letter-spacing:.02em}
+.fig text.small{font-size:8.6px;letter-spacing:.04em}
+.fig .box{fill:#000;stroke:rgba(255,255,255,.3)}
+.fig .finger{fill:#0f0f0f;stroke:rgba(255,255,255,.36)}
+.fig .imu-x,.fig .imu-y,.fig .imu-z{fill:none;stroke-width:1.2}
+.fig .imu-x{stroke:rgba(255,255,255,.75)}.fig .imu-y{stroke:rgba(255,255,255,.4)}.fig .imu-z{stroke:var(--act)}
+.imu-scroll{animation:imu-scroll 3.2s linear infinite}
+@keyframes imu-scroll{to{transform:translateX(-132px)}}
+.seq{animation:seq 3.2s ease-in-out infinite;animation-delay:calc(var(--d) * .4s - 3.2s)}
+@keyframes seq{0%,34%,100%{opacity:.18}8%,22%{opacity:1}}
+.cls-bar,.gan-real,.gan-fake{transform-box:fill-box;transform-origin:left center}
+.cls-bar{animation:cls 3.2s ease-in-out infinite}
+@keyframes cls{0%,40%{transform:scaleX(.25)}60%,92%{transform:scaleX(1)}100%{transform:scaleX(.25)}}
+.gan-real{animation:gan-real 6s linear -3.6s infinite}
+.gan-fake{transform:scaleX(.16);animation:gan-fake 6s linear -3.6s infinite}
+@keyframes gan-real{0%,100%{transform:scaleX(.2)}55%,90%{transform:scaleX(1)}}
+@keyframes gan-fake{0%,100%{transform:scaleX(1)}55%,90%{transform:scaleX(.16)}}
+/* FingerReader: point at a product, a CNN recognises it, the device speaks. */
+.fr-hand{animation:fr-hand 6.4s var(--ease) infinite}
+@keyframes fr-hand{0%{transform:translateX(30px);opacity:.25}10%,92%{transform:none;opacity:1}100%{transform:translateX(30px);opacity:.25}}
+.fr-cone{animation:fr-cone 6.4s linear infinite}
+@keyframes fr-cone{0%,11%{opacity:0}14%,90%{opacity:.75}94%,100%{opacity:0}}
+.fr-scan{opacity:0;animation:fr-scan 6.4s linear infinite}
+@keyframes fr-scan{0%,14%{opacity:0;transform:none}15%{opacity:.9;transform:none}27%{opacity:.9;transform:translateY(40px)}28%,100%{opacity:0;transform:translateY(40px)}}
+.fr-packet{opacity:0;animation:fr-packet 6.4s linear infinite}
+@keyframes fr-packet{0%,24%{opacity:0;transform:translate(138.5px,117px)}25%{opacity:1;transform:translate(138.5px,117px)}28%{transform:translate(138.5px,96.5px)}33%{opacity:1;transform:translate(194px,96.5px)}34%,100%{opacity:0;transform:translate(194px,96.5px)}}
+.fr-lit{opacity:0;animation:fr-lit 6.4s linear infinite;animation-delay:calc(2.11s + var(--d) * .38s)}
+@keyframes fr-lit{0%{opacity:0}1%,8%{opacity:1}10%,100%{opacity:0}}
+.fr-hold{opacity:0;animation:fr-hold 6.4s linear infinite}
+@keyframes fr-hold{0%,51%{opacity:0}53%,90%{opacity:1}93%,100%{opacity:0}}
+.fr-voice,.fr-bubble{animation:fr-say 6.4s linear infinite}
+@keyframes fr-say{0%,54%{opacity:0}57%,90%{opacity:1}93%,100%{opacity:0}}
+.fr-arc{animation:blink 1.1s ease-in-out infinite;animation-delay:calc(var(--d,0) * .18s)}
+.fig text.fr-step-a{animation:fr-step-a 6.4s linear infinite}
+.fig text.fr-step-b{animation:fr-step-b 6.4s linear infinite}
+.fig text.fr-step-c{animation:fr-step-c 6.4s linear infinite}
+@keyframes fr-step-a{0%,30%{fill:var(--act)}31%,100%{fill:rgba(255,255,255,.58)}}
+@keyframes fr-step-b{0%,31%{fill:rgba(255,255,255,.58)}32%,55%{fill:var(--act)}56%,100%{fill:rgba(255,255,255,.58)}}
+@keyframes fr-step-c{0%,55%{fill:rgba(255,255,255,.58)}56%,92%{fill:var(--act)}93%,100%{fill:rgba(255,255,255,.58)}}
+/* Decentralized training: a node leaves the run and another joins. */
+.churn{animation:churn 8s ease-in-out infinite}
+@keyframes churn{0%,38%{opacity:1}46%,60%{opacity:.12}70%,100%{opacity:1}}
+.join-tag{opacity:0;animation:join-tag 8s ease-in-out infinite}
+@keyframes join-tag{0%,62%{opacity:0}68%,88%{opacity:1}94%,100%{opacity:0}}
+.blink-caret{animation:caret 1.05s steps(1) infinite}
+/* Efficient inference: a request lights every layer of the stack on its way down, tokens stream back out. */
+.fig .fill-lime{fill:var(--lime)}
+.stk-band{opacity:0;animation:stk-band 3.6s ease-in-out infinite;animation-delay:calc(var(--d) * .3s - 3.6s)}
+@keyframes stk-band{0%,40%,100%{opacity:0}8%,20%{opacity:1}}
+.slot{animation:slot 3.6s steps(1) infinite;animation-delay:calc(var(--d) * -.37s)}
+@keyframes slot{0%,58%{opacity:1}60%,74%{opacity:.14}76%,100%{opacity:1}}
+.page{animation:page 2.8s steps(1) infinite;animation-delay:calc(var(--d) * -.16s)}
+@keyframes page{0%,44%{opacity:1}46%,70%{opacity:.2}72%,100%{opacity:1}}
+.fuse-a,.fuse-c{animation:fuse-a 4s var(--ease) infinite}
+.fuse-c{animation-name:fuse-c}
+@keyframes fuse-a{0%,22%,100%{transform:none}42%,78%{transform:translateX(46px)}}
+@keyframes fuse-c{0%,22%,100%{transform:none}42%,78%{transform:translateX(-46px)}}
+.fuse-b{animation:fuse-b 4s var(--ease) infinite}
+@keyframes fuse-b{0%,30%,86%,100%{stroke:rgba(255,255,255,.18);fill:#0b0b0b}42%,78%{stroke:var(--act);fill:rgba(133,237,117,.16)}}
+.led{animation:blink 1.6s ease-in-out infinite;animation-delay:calc(var(--d) * -.4s)}
 .reader-reticle{animation:reader-scan 5.6s var(--ease) infinite}
 .reader-read{transform-box:fill-box;transform-origin:left center;animation:reader-read 5.6s var(--ease) infinite}
 @keyframes reader-scan{0%,8%{transform:translateX(0)}70%,84%{transform:translateX(118px)}100%{transform:translateX(0)}}
@@ -192,7 +253,7 @@ html[data-motion=off] .ticker-track[aria-hidden]{display:none}
 @keyframes wave{0%{transform:scaleY(.25)}100%{transform:scaleY(1)}}
 .blink{animation:blink 2.4s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:.25}50%{opacity:1}}
-.merge-cell{fill:rgba(255,255,255,.12);animation:merge 4.8s ease-in-out infinite;animation-delay:calc(var(--d) * 70ms)}
+.merge-cell{fill:var(--act);animation:merge 4.8s ease-in-out infinite;animation-delay:calc(var(--d) * 70ms - 4.8s)}
 @keyframes merge{0%,12%{fill:rgba(255,255,255,.12)}30%,70%{fill:var(--act)}88%,100%{fill:rgba(255,255,255,.12)}}
 .flow{stroke-dasharray:4 5;animation:flow 1.2s linear infinite}
 @keyframes flow{to{stroke-dashoffset:-18}}
@@ -438,7 +499,9 @@ html[data-motion=off] .rule{transform:none}
   .post-card{grid-template-columns:1fr}
   .post-cover{border-right:0;border-bottom:1px solid var(--line);aspect-ratio:16/9}
   .code-card{grid-template-columns:1fr;padding:22px}
-  .act-fig{min-height:260px;padding:44px 14px 22px}
+  .act-fig{min-height:0;padding:18px 8px}
+  .act-head{padding:18px 18px 16px}
+  .act-info{padding:18px 18px 22px}
   .footer-base{flex-direction:column;align-items:flex-start}
   .prose{font-size:17px}
   .prose .lead{font-size:19px}
@@ -452,7 +515,6 @@ html[data-motion=off] .rule{transform:none}
 }
 @media (max-width:420px){
   .brand-name .long{display:none}
-  .act-info{padding:20px 18px 22px}
   .hero-cta .btn{padding:10px 11px}
 }
 @media (prefers-reduced-motion:reduce){

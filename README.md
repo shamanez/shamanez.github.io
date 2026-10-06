@@ -10,15 +10,15 @@ Hosting policy: this is a personal website. Use the `shamanez` GitHub account an
 
 ## The design
 
-The site carries one idea: **foundational intelligence, for every domain**. Shamane builds foundation models and adapts them to specific domains so that everyone can use them. The copy stays short, and animated figures show the work.
+The site carries one idea: **foundational intelligence, for every domain**. Intelligence keeps changing, and so does the way it becomes domain specific. Shamane builds sovereign foundation models that anyone can adapt and own. The copy stays short, and animated figures show the work.
 
-The visual language follows Prime Intellect: a black field, hairline panels, uppercase mono labels, white square buttons, numbered navigation tabs, numbered “Fig.” diagrams and a single lime signal colour (`#85ed75`). Type is self-hosted Geist and Geist Mono. Copy avoids em-dashes and mid-sentence semicolons.
+The visual language follows Prime Intellect: a black field, hairline panels, uppercase mono labels, white square buttons, numbered navigation tabs and a single lime signal colour (`#85ed75`). Figures carry no figure numbers. Type is self-hosted Geist and Geist Mono. Copy avoids em-dashes, semicolons and mid-sentence colons.
 
-- **Hero (Fig. 01).** A dot-matrix world map traces the journey from Sri Lanka to Singapore, Auckland, remote work with US teams, and Melbourne. Peer GPUs join and exchange packets, and visitors can click the map to add a node. The headline has a sweeping light wash. The terminal types `adapt.py` and cycles through domains before settling on `--domain=yours`.
+- **Hero.** A dot-matrix world map traces the journey from Sri Lanka to Singapore, Auckland, remote work with teams in Florida and San Francisco, and Melbourne. Peer GPUs join and exchange packets, and visitors can click the map to add a node. The terminal types `adapt.py` and cycles through domains before settling on `--domain=yours`.
 - **Domains ticker.** A scrolling list of domains the work has adapted models to.
-- **Built at.** The key organisations, each with a short role and one or two technical keywords, plus a link to the full timeline on LinkedIn.
-- **Story (Fig. 02 to 07).** Six cards, each with an animated figure and one line: every person, every scene, every signal, every domain, every GPU, and a queued “every world” card that links to Log 001.
-- **Research.** A timeline chart built from the publication list (Fig. 08), then curated clusters with recent work first and Shamane’s name highlighted in every author list. Research-impact numbers are deliberately left off.
+- **Built at.** The key organisations, each with a short role and one or two technical keywords, with the full timeline on LinkedIn.
+- **Story.** Ten cards. Each leads with its topic, then an animated figure, then one line: sensors and GANs, computer vision in the CNN era (FingerReader), reinforcement learning (successor features between model-free and model-based RL), self-supervised learning, end-to-end RAG (both DPR towers trained with the generator), domain-expert LLMs, decentralized pre-training, decentralized post-training, the efficient inference stack, and a queued “what comes next” card where an LLM asks a site-specific world model to simulate a plan before anything moves. It links to Log 001.
+- **Research.** A timeline chart built from the publication list, then curated clusters with recent work first and Shamane’s name highlighted in every author list. Research-impact numbers are deliberately left off.
 - **Writing and open source.** Field notes and the Pluralis post, then the open-source tools (ROLL × OpenReward, MergeKit, RAG-end2end, VUSFA) with real usage snippets.
 - **Footer.** Dot-matrix lettering that responds to the pointer, and links to Google Scholar, LinkedIn, X and GitHub.
 
