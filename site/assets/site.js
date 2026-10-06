@@ -68,44 +68,32 @@
     entry.target.classList.add('is-in');
   }, { rootMargin: '0px 0px -6% 0px', threshold: 0.06 });
 
-  /* Typed terminal command. */
+  /* Typed terminal command that cycles through domains before settling on the last one. */
   const typed = document.querySelector('.typed[data-type]');
   if (typed) {
-    const command = typed.dataset.type;
-    let timer = 0;
-    const type = () => {
-      clearTimeout(timer);
-      if (!moving) { typed.textContent = command; return; }
-      let index = 0;
-      typed.textContent = '';
-      const step = () => {
-        typed.textContent = command.slice(0, ++index);
-        if (index < command.length) timer = setTimeout(step, 34 + Math.random() * 46);
-      };
-      timer = setTimeout(step, 1100);
-    };
-    type();
-    motionListeners.push(on => { if (!on) { clearTimeout(timer); typed.textContent = command; } });
+    const command = typed.dataset.type, domains = (typed.dataset.cycle || '').split(',').filter(Boolean);
+    const last = domains[domains.length - 1] || '';
+    const commandText = document.createTextNode(''), domain = document.createElement('span');
+    domain.className = 'domain';
+    typed.replaceChildren(commandText, domain);
+    let timers = [];
+    const show = (head, tail) => { commandText.data = head; domain.textContent = tail; };
+    const finish = () => { timers.forEach(clearTimeout); timers = []; show(command, last); };
+    if (!moving) finish();
+    else {
+      let at = 1100;
+      const queue = (head, tail, wait) => { timers.push(setTimeout(() => show(head, tail), at)); at += wait; };
+      for (let i = 1; i <= command.length; i++) queue(command.slice(0, i), '', 28 + Math.random() * 36);
+      domains.forEach((value, index) => {
+        for (let i = 1; i <= value.length; i++) queue(command, value.slice(0, i), 60 + Math.random() * 40);
+        if (index === domains.length - 1) return;
+        at += 1200;
+        for (let i = value.length - 1; i >= 0; i--) queue(command, value.slice(0, i), 26);
+        at += 220;
+      });
+    }
+    motionListeners.push(on => { if (!on) finish(); });
   }
-
-  /* Metrics count up once, then flash. */
-  const format = value => value.toLocaleString('en-US');
-  const counted = new WeakSet();
-  const countUp = element => {
-    if (counted.has(element)) return;
-    counted.add(element);
-    const target = Number(element.dataset.count), suffix = element.dataset.suffix || '';
-    if (!Number.isFinite(target)) return;
-    if (!moving) { element.textContent = format(target) + suffix; return; }
-    const start = performance.now(), duration = 1400;
-    const tick = now => {
-      const progress = Math.min(1, (now - start) / duration);
-      element.textContent = format(Math.round(target * (1 - Math.pow(1 - progress, 3)))) + suffix;
-      if (progress < 1) requestAnimationFrame(tick); else element.classList.add('flash');
-    };
-    requestAnimationFrame(tick);
-  };
-  observe([...document.querySelectorAll('[data-count]')], entry => { if (entry.isIntersecting) countUp(entry.target); }, { threshold: 0.5 });
 
   /* Story figures only animate while visible. */
   const figures = [...document.querySelectorAll('.act-fig')];
@@ -117,7 +105,7 @@
   observe(figures, entry => { entry.target.classList.toggle('is-playing', entry.isIntersecting); syncFigure(entry.target); }, { rootMargin: '60px' });
   motionListeners.push(() => figures.forEach(syncFigure));
 
-  /* FIG. 06 — research drift chart, built from the publication list itself. */
+  /* Research timeline, built from the publication list itself. */
   const driftHost = document.getElementById('drift');
   if (driftHost) {
     const svgNS = 'http://www.w3.org/2000/svg';
@@ -134,7 +122,7 @@
       const link = paper.querySelector('.paper-title');
       papers.push({
         element: paper, lane: Number(cluster.dataset.lane), color: getComputedStyle(cluster).getPropertyValue('--c').trim() || '#85ed75',
-        time: year + ((month || 6) - 0.5) / 12, cites: Number(paper.dataset.cites) || 0,
+        time: year + ((month || 6) - 0.5) / 12,
         title: link.textContent.replace('↗', '').trim(), href: link.href, venue: paper.dataset.venue || '',
       });
     }));
@@ -149,7 +137,7 @@
     const showTip = (paper, x, y) => {
       tip.replaceChildren(document.createTextNode(paper.title));
       const small = document.createElement('small');
-      small.textContent = `${paper.venue}${paper.cites ? ` · ${format(paper.cites)} citations` : ''}`;
+      small.textContent = paper.venue;
       tip.append(small);
       const width = driftHost.clientWidth;
       tip.style.left = `${Math.max(150, Math.min(width - 150, x))}px`;
@@ -183,12 +171,11 @@
       const now = x(2026.8);
       make('line', { class: 'now', x1: now, x2: now, y1: top - 14, y2: height - bottom + 6 }, svg);
       make('text', { x: now, y: top - 16, 'text-anchor': 'middle', fill: '#85ed75' }, svg).textContent = 'Now';
-      const maxRadius = Math.min(22, laneHeight * 0.44);
+      const radius = Math.min(7, laneHeight * 0.2);
       const placed = [];
       papers.forEach((paper, index) => {
         const cx = x(paper.time);
         let cy = laneY(paper.lane);
-        const radius = Math.min(maxRadius, 4 + Math.sqrt(paper.cites) * 0.62);
         const clash = placed.filter(other => other.lane === paper.lane && Math.abs(other.cx - cx) < other.radius + radius).length;
         if (clash) cy += (clash % 2 ? -1 : 1) * Math.min(8, laneHeight * 0.18);
         placed.push({ lane: paper.lane, cx, radius });
@@ -210,7 +197,7 @@
     new ResizeObserver(() => { clearTimeout(resizeTimer); resizeTimer = setTimeout(drawDrift, 120); }).observe(driftHost);
   }
 
-  /* FIG. 01 — the hero: a dot-matrix world, the journey so far, and peers joining the run. */
+  /* Hero: a dot-matrix world, the journey so far, and peers joining the run. */
   const fx = document.getElementById('world');
   const base = document.querySelector('.hero-base');
   const focus = document.querySelector('.map-focus');

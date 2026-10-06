@@ -29,11 +29,3 @@ export function parseScholar(html) {
   return publications.slice(0, 12);
 }
 
-// The profile's "Cited by" table: all-time citations, h-index and i10-index come first in each row.
-export function parseMetrics(html) {
-  const table = html.match(/<table\b[^>]*id="gsc_rsb_st"[^>]*>([\s\S]*?)<\/table>/)?.[1];
-  if (!table) return null;
-  const [citations, , hIndex, , i10Index] = [...table.matchAll(/<td class="gsc_rsb_std">(\d+)<\/td>/g)].map(match => Number(match[1]));
-  return [citations, hIndex, i10Index].every(Number.isFinite) ? { citations, hIndex, i10Index } : null;
-}
-

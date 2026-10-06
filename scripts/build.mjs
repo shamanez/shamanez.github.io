@@ -61,17 +61,8 @@ const blogIndex = posts.map((post, index) => `        <a class="post-card" href=
 const indexPath = join(publicDir, 'index.html');
 let indexHtml = replaceBetween(await readFile(indexPath, 'utf8'), 'BLOG_INDEX', blogIndex);
 
-// Scholar figures and newly indexed papers come from the refreshed (or snapshot) feed.
+// Newly indexed papers come from the refreshed (or snapshot) Scholar feed.
 const scholar = JSON.parse(await readFile(join(publicDir, 'data/scholar.json'), 'utf8'));
-if (scholar.metrics) {
-  const { citations, hIndex } = scholar.metrics, checkedAt = scholar.metrics.checkedAt ?? scholar.fetchedAt;
-  indexHtml = replaceBetween(indexHtml, 'SCHOLAR_METRICS', `      <div class="metrics" data-reveal>
-        <div class="metric"><span class="metric-value" data-count="${citations}">${citations.toLocaleString('en-US')}</span><span class="metric-label">Citations · Google Scholar</span></div>
-        <div class="metric"><span class="metric-value" data-count="${hIndex}">${hIndex}</span><span class="metric-label">h-index</span></div>
-        <div class="metric"><span class="metric-value" data-count="7" data-suffix="k+">7k+</span><span class="metric-label">GitHub stars on <a href="https://github.com/arcee-ai/mergekit" target="_blank" rel="noopener noreferrer">MergeKit</a></span></div>
-      </div>
-      <p class="metrics-note">Scholar figures refresh automatically · checked <time datetime="${checkedAt.slice(0, 10)}">${displayDate(checkedAt)}</time></p>`);
-}
 const titleKey = title => decode(title.replace(/<[^>]+>/g, '')).toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 40);
 const curatedHtml = indexHtml.replace(/<!-- SCHOLAR_NEW_START -->[\s\S]*?<!-- SCHOLAR_NEW_END -->/, '');
 const curated = new Set([...curatedHtml.matchAll(/<a class="paper-title"[^>]*>([\s\S]*?)<\/a>/g)].map(match => titleKey(match[1])));
@@ -109,4 +100,4 @@ for (const page of pages) {
   await writeFile(path, html);
 }
 await writeFile(join(outputDir, '.nojekyll'), '');
-console.log(JSON.stringify({ posts: posts.length, readingTime: posts.map(p => ({ log: p.log, minutes: p.readingTime })), scholar: { source: scholar.source, fetchedAt: scholar.fetchedAt, metrics: scholar.metrics ?? null, uncurated: fresh.length }, output: '_site' }));
+console.log(JSON.stringify({ posts: posts.length, readingTime: posts.map(p => ({ log: p.log, minutes: p.readingTime })), scholar: { source: scholar.source, fetchedAt: scholar.fetchedAt, uncurated: fresh.length }, output: '_site' }));
