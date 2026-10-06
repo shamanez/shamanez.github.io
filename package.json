@@ -5,7 +5,8 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "dev": "node scripts/build.mjs && node scripts/preview.mjs",
-    "refresh:scholar": "node scripts/update-scholar.mjs"
+    "refresh:scholar": "node scripts/update-scholar.mjs",
+    "check:links": "node scripts/check-links.mjs"
   },
   "engines": {
     "node": ">=24"

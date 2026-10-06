@@ -1,5 +1,5 @@
 import { readFile, writeFile } from 'node:fs/promises';
-import { SCHOLAR_PROFILE, parseScholar } from './scholar.mjs';
+import { SCHOLAR_PROFILE, parseScholar, parseMetrics } from './scholar.mjs';
 
 const dataFile = new URL('../site/data/scholar.json', import.meta.url);
 const publishedFeed = 'https://shamanez.github.io/data/scholar.json';
@@ -16,6 +16,11 @@ async function responseText(url, timeout) {
   return text;
 }
 
+// Citation figures carry their own retrieval date, so a fallback never relabels older numbers.
+const validMetrics = metrics => metrics === undefined || (['citations', 'hIndex', 'i10Index'].every(key => Number.isFinite(metrics[key]))
+  && (metrics.checkedAt === undefined || (Number.isFinite(Date.parse(metrics.checkedAt)) && Date.parse(metrics.checkedAt) <= Date.now())));
+const newerMetrics = (a, b) => !a ? b : !b ? a : Date.parse(a.checkedAt ?? 0) >= Date.parse(b.checkedAt ?? 0) ? a : b;
+
 function validSnapshot(data) {
   try {
     const profile = new URL(data.profile);
@@ -25,18 +30,21 @@ function validSnapshot(data) {
       && Date.parse(data.fetchedAt) <= Date.now()
       && Array.isArray(data.publications) && data.publications.length > 0
       && data.publications.length <= 12
-      && data.publications.every(paper => typeof paper.title === 'string' && typeof paper.url === 'string');
+      && data.publications.every(paper => typeof paper.title === 'string' && typeof paper.url === 'string')
+      && validMetrics(data.metrics);
   } catch { return false; }
 }
 
 let data;
 try {
   const html = await responseText(SCHOLAR_PROFILE, 20000);
+  const fetchedAt = new Date().toISOString(), metrics = parseMetrics(html);
   data = {
     source: 'scholar',
     profile: SCHOLAR_PROFILE,
-    fetchedAt: new Date().toISOString(),
+    fetchedAt,
     publications: parseScholar(html),
+    metrics: metrics ? { ...metrics, checkedAt: fetchedAt } : fallback.metrics,
   };
   console.log(`Refreshed ${data.publications.length} verified Scholar records.`);
 } catch {
@@ -47,7 +55,7 @@ try {
     const previous = JSON.parse(await responseText(publishedFeed, 10000));
     if (validSnapshot(previous) && Date.parse(previous.fetchedAt) > Date.parse(data.fetchedAt)) data = previous;
   } catch {}
-  data = { ...data, source: 'snapshot' };
+  data = { ...data, metrics: newerMetrics(data.metrics, fallback.metrics), source: 'snapshot' };
   console.log(`Scholar unavailable; using the dated snapshot from ${data.fetchedAt}.`);
 }
 if (!validSnapshot(data)) throw new Error('No valid Scholar records available for publication');

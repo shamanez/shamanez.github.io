@@ -1,7 +1,7 @@
 {
   "source": "scholar",
   "profile": "https://scholar.google.com/citations?user=8TAf2IMAAAAJ&hl=en&sortby=pubdate&pagesize=20",
-  "fetchedAt": "2026-10-06T03:46:44.825Z",
+  "fetchedAt": "2026-10-06T10:53:25.910Z",
   "publications": [
     {
       "title": "Communication-Efficient LLM Adaptation over Decentralized GPU Meshes",
@@ -87,5 +87,11 @@
       "venue": "Proceedings of the 35th Annual ACM Symposium on User Interface Software and�…, 2022",
       "year": "2022"
     }
-  ]
+  ],
+  "metrics": {
+    "citations": 1550,
+    "hIndex": 10,
+    "i10Index": 10,
+    "checkedAt": "2026-10-06T10:53:25.910Z"
+  }
 }
