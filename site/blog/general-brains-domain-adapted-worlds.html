@@ -69,7 +69,7 @@
         <p class="eyebrow purple">LOG 001 / WORLD MODELS / DOMAIN ADAPTATION / PHYSICAL AI</p>
         <h1>LLMs, world models,<br>and what comes next.</h1>
         <p class="article-deck">LLMs keep getting better. I think the next question is how their intelligence connects to the worlds where we use it.</p>
-        <div class="article-byline"><span>Shamane Siriwardhana</span><time datetime="2026-10-05">05 October 2026</time><span>Updated <time datetime="2026-10-09">09 October 2026</time></span><span data-reading-time>9 min read</span></div>
+        <div class="article-byline"><span>Shamane Siriwardhana</span><time datetime="2026-10-05">05 October 2026</time><span>Updated <time datetime="2026-10-09">09 October 2026</time></span><span data-reading-time>8 min read</span></div>
       </header>
       <div class="article-layout">
         <nav class="article-toc" aria-label="In this essay"><p>IN THIS LOG</p><a href="#frontier-foundation-models">Frontier foundation models</a><a href="#world-models">World models and their main approaches</a><a href="#different-jobs">Different jobs, one system</a><a href="#domain-specific">Where domain adaptation goes next</a><a href="#references">References</a></nav>
@@ -202,7 +202,7 @@
 <p>The connection still needs work. Goals, observations and actions need compatible interfaces. Prediction errors grow over longer rollouts. And a useful deployment has to fit the latency and reliability requirements of the actual system.</p>
 
 <h2 id="domain-specific">Where domain adaptation goes next</h2>
-<p>This is the part I want to work on. I picked these three papers because they ask different questions about domain adaptation. What can we reuse? How should we structure prediction? What changes when the sensor changes?</p>
+<p>This is the part I want to work on. How do we reuse what a model has learned while adapting its predictions to a particular domain?</p>
 <figure class="essay-figure ef-papers" id="figure-domain-papers" aria-labelledby="figure-domain-papers-caption">
   <div class="ef-head"><span class="ef-id">05 / Why these three papers</span><button class="motion-toggle" type="button" aria-pressed="true">Motion on</button></div>
   <div class="ef-paper">
@@ -240,9 +240,7 @@
   </div>
   <figcaption id="figure-domain-papers-caption">Three complementary questions. Simplified flows with an illustrative factor count.</figcaption>
 </figure>
-<p>JEPA-Anything adds <strong>orthogonal predictive factorization</strong>. It learns complementary latent subspaces, predicts each through a separate branch, then combines them. Orthogonality encourages different latent directions. It does not guarantee independent real-world causes. The domain still determines the encoder, inputs and targets. <a class="citation" href="#ref-10" aria-label="Reference 10">[10]</a></p>
-<p>I find that promising. The paper reports gains in forecasting and intervention prediction, while control results are mixed. It offers a common training design across domains. It does not establish one universal pretrained checkpoint. Some uses retain only encoder features. Operational predictions retain the predictive machinery. <a class="citation" href="#ref-10" aria-label="Reference 10">[10]</a></p>
-<p>Together, these papers help me separate reusable learning from the work a domain still needs. A useful representation, a forecast and an action model are different capabilities. My bet is that we will reuse foundations where they transfer, then adapt the sensors, prediction targets and dynamics where they do not. I want that adaptation to be something people can build and own.</p>
+<p>I chose these papers because they show different parts of the same problem. V-JEPA 2-AC reuses visual knowledge for robot planning. JEPA-Anything explores a common predictive design across domains. AD-LiST-JEPA adapts latent prediction to LiDAR. Together, they help me think about what can transfer and what a specific domain still needs.</p>
 
 <h2 id="references">References</h2>
 <ol class="references">
