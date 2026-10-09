@@ -72,36 +72,38 @@
         <div class="article-byline"><span>Shamane Siriwardhana</span><time datetime="2026-10-05">05 October 2026</time><span>Updated <time datetime="2026-10-09">09 October 2026</time></span><span data-reading-time>7 min read</span></div>
       </header>
       <div class="article-layout">
-        <nav class="article-toc" aria-label="In this essay"><p>IN THIS LOG</p><a href="#from-foundation-models">From self-supervision to world models</a><a href="#longer-work">General models, longer work</a><a href="#worlds-we-can-see">Worlds we can see</a><a href="#predicting-what-matters">Predicting what matters</a><a href="#different-jobs">Different jobs, one system</a><a href="#domain-specific">Where domain adaptation goes next</a><a href="#references">References</a></nav>
+        <nav class="article-toc" aria-label="In this essay"><p>IN THIS LOG</p><a href="#from-foundation-models">From self-supervised learning to world models</a><a href="#longer-work">General models, longer work</a><a href="#worlds-we-can-see">Worlds we can see</a><a href="#predicting-what-matters">Predicting what matters</a><a href="#different-jobs">Different jobs, one system</a><a href="#domain-specific">Where domain adaptation goes next</a><a href="#references">References</a></nav>
         <article class="prose">
 <p class="lead">LLMs and long-horizon agents have changed the landscape of digital work, from coding and research to longer workflows. So where does intelligence go next? I’m especially interested in how it extends into the physical world, and what still needs to be specific to a domain.</p>
 
-<h2 id="from-foundation-models">From self-supervision to world models</h2>
-<p>Self-supervised learning gave us a way to learn reusable representations from text, images, video and other signals. Scaling that recipe helped language models become useful across tasks. World models developed alongside them, learning the structure of an environment or how it changes.</p>
-<p>The connection is prediction. A language model can help describe a goal and plan through tools. A world model can represent a space or predict a future state. For choosing actions, the important question becomes <em>what changes if I do this?</em></p>
-<figure class="essay-figure" id="figure-shared-roots" aria-labelledby="figure-shared-roots-caption">
-  <div class="ef-head"><span class="ef-id">01 / Shared roots</span><span class="ef-label">Different predictions</span></div>
+<h2 id="from-foundation-models">From self-supervised learning to world models</h2>
+<p>The progression I’m interested in starts with self-supervised learning. LLMs scaled that approach around language, and omni LLMs bring text, vision and audio together. Now the question is how that broader intelligence connects to different types of world models.</p>
+<figure class="essay-figure ef-evolution" id="figure-shared-roots" aria-labelledby="figure-shared-roots-caption">
+  <div class="ef-head"><span class="ef-id">01 / A widening scope</span><span class="ef-label">From data to worlds</span></div>
   <div class="ef-canvas">
-    <p class="ef-data">Text · images · video · sensor streams</p>
-    <div class="ef-root ef-node"><span class="ef-label">Self-supervised learning</span><strong>Learn reusable representations</strong><small>Learn structure from the data itself</small></div>
+    <div class="ef-evolution-top">
+      <div class="ef-node"><strong>Self-supervised learning</strong><small>Learn from the data itself</small></div>
+      <span class="ef-evolution-step" aria-hidden="true">→</span>
+      <div class="ef-node"><strong>LLMs</strong><small>Language and reasoning</small></div>
+      <span class="ef-evolution-step" aria-hidden="true">→</span>
+      <div class="ef-node"><strong>Omni LLMs</strong><small>Text, vision, audio and more</small></div>
+    </div>
+    <div class="ef-evolution-turn" aria-hidden="true"><div class="ef-arrow"></div></div>
+    <div class="ef-root ef-node"><strong>Different types of world models</strong></div>
     <div class="ef-arrow" aria-hidden="true"></div>
     <div class="ef-branches">
       <div class="ef-node">
-        <svg class="ef-icon" viewBox="0 0 48 35" aria-hidden="true"><path class="ef-muted" d="M2 4h29v21H12l-6 6v-6H2z"/><path d="M8 10h17M8 15h10M8 20h14"/><path class="ef-signal" d="M37 11h8v19h-20v-2M32 17h7M32 22h7"/></svg>
-        <strong>Language + tools</strong><small>Reason and coordinate</small>
-      </div>
-      <div class="ef-node">
         <svg class="ef-icon" viewBox="0 0 48 35" aria-hidden="true"><path class="ef-muted" d="M1 28h46M5 21h38M11 14h26M17 7h14M24 1v32M13 6l-7 27M35 6l7 27"/><path class="ef-signal" d="m16 12 8-4 8 4v10l-8 4-8-4zM16 12l8 4 8-4M24 16v10"/></svg>
-        <strong>Rendered / spatial worlds</strong><small>Generate and explore</small>
+        <strong>Generative / spatial models</strong><small>Generate scenes and experiences</small>
       </div>
       <div class="ef-node">
         <svg class="ef-icon" viewBox="0 0 48 35" aria-hidden="true"><path class="ef-muted" d="M6 7 24 17 6 29M6 7 40 5 24 17 41 30 6 29M24 17 43 17"/><g class="ef-signal"><circle cx="6" cy="7" r="3"/><circle cx="6" cy="29" r="3"/><circle cx="24" cy="17" r="4"/><circle cx="40" cy="5" r="2"/><circle cx="43" cy="17" r="2"/><circle cx="41" cy="30" r="2"/></g></svg>
-        <strong>Latent prediction</strong><small>Anticipate and plan</small>
+        <strong>Latent predictive models</strong><small>Predict useful states and changes</small>
       </div>
     </div>
-    <p class="ef-shared">Shared foundations → adaptation to tasks and domains</p>
+    <p class="ef-shared">Overlapping approaches that can work together</p>
   </div>
-  <figcaption id="figure-shared-roots-caption">One learning recipe, several useful directions. These roles overlap and can work together.</figcaption>
+  <figcaption id="figure-shared-roots-caption">A widening scope, with world models also developing alongside LLMs.</figcaption>
 </figure>
 
 <h2 id="longer-work">General models, longer work</h2>

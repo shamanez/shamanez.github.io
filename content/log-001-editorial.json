@@ -19,7 +19,7 @@
     "The Forbes council article remains in the references as an inspiration rather than empirical evidence. At the author’s request, removed the opening inspiration paragraph naming Yifeng Yin and Fei-Fei Li and led with the impact of LLMs and long-horizon agents on digital work.",
     "Fei-Fei Li and World Labs are not characterized as pixel-only. Their account includes multimodal, implicit/explicit state and rendering, simulation and planning functions.",
     "Removed the old simulator/digital-twin table, RAG self-citation, old mandatory one-model-per-site architecture and separate checklist. Important challenges now appear briefly beside the proposed composition.",
-    "The three figures explain common self-supervised roots, a deliberately evaluated training-feedback loop and one possible combination of goals, generated scenarios, predictive state and control. They are explanatory diagrams, not empirical charts or a claimed established complete system.",
+    "The three figures explain the author’s conceptual progression from self-supervised learning through LLMs and omni LLMs to different world-model approaches, a deliberately evaluated training-feedback loop and one possible combination of goals, generated scenarios, predictive state and control. They are explanatory diagrams, not empirical charts or a claimed established complete system.",
     "The feedback loop is conditional. User interactions do not automatically retrain a model, and useful examples require evaluation before training and measurement afterwards.",
     "General software-task progress is grounded in METR time horizons defined against human task completion time, without claiming generalized reliability or AGI.",
     "Cosmos 3 and Odyssey-3 can supply policies/actions as well as scenarios. Cosmos 3 includes a 4B Edge variant. Large-lab advantage is an explicitly personal economic hypothesis, not a deterministic architectural claim.",
@@ -29,7 +29,8 @@
     "JEPA-Anything uses a shared learning principle across domain-specific adapters/encoders/targets, not one proven universal pretrained checkpoint. Representation learning is distinguished from retaining a predictor for operational dynamics.",
     "The LiDAR source establishes occupancy completion/forecasting evidence, not an action-conditioned driving controller. Other sensor panels are explicit design possibilities, not existing complete systems.",
     "A planner evaluates predicted consequences against a goal. A world model does not inherently supply utility, and the controller executes actions. Potential errors and runtime requirements remain relevant.",
-    "Authored visible prose and figure text contain no em dashes or colons. Reference labels are concise descriptive titles linked to their exact sources."
+    "Authored visible prose and figure text contain no em dashes or colons. Reference labels are concise descriptive titles linked to their exact sources.",
+    "At the author’s request, made the first section and figure explicitly follow Self-supervised learning → LLMs → Omni LLMs → Different types of world models. The figure describes widening capability rather than a required historical lineage, and notes that world models also developed alongside language models. Generative/spatial and latent predictive approaches can overlap."
   ],
   "sources": [
     {

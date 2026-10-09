@@ -142,3 +142,34 @@ html[data-motion=off] .essay-figure *,html[data-motion=off] .essay-figure *::bef
 @media(prefers-reduced-motion:reduce){
   .essay-figure *,.essay-figure *::before{animation:none!important;transition:none!important}
 }
+
+/* Figure 01 follows the widening scope from self-supervision to world models. */
+.essay-figure .ef-evolution-top{display:grid;grid-template-columns:minmax(0,1fr) 22px minmax(0,1fr) 22px minmax(0,1fr);align-items:stretch}
+.essay-figure .ef-evolution-top>.ef-node{padding:12px 10px}
+.essay-figure .ef-evolution-top>.ef-node>strong{font-size:13px}
+.essay-figure .ef-evolution-top>.ef-node>small{font-size:11px}
+.essay-figure .ef-evolution-step{display:flex;align-items:center;justify-content:center;font-family:var(--mono);color:var(--lime);font-size:16px}
+.essay-figure .ef-evolution-turn{position:relative;height:44px}
+.essay-figure .ef-evolution-turn::before{content:'';position:absolute;left:50%;right:calc((100% - 44px)/6);top:0;height:16px;border-right:1px solid var(--line-3);border-bottom:1px solid var(--line-3)}
+.essay-figure .ef-evolution-turn>.ef-arrow{position:absolute;left:50%;top:16px;height:28px;margin:0}
+.essay-figure.ef-evolution .ef-branches{grid-template-columns:repeat(2,minmax(0,1fr))}
+.essay-figure.ef-evolution .ef-branches::before{left:25%;right:25%}
+.essay-figure.ef-evolution .ef-branches>.ef-node:first-child{--ef-accent:var(--cyan,#6cd4ff)}
+.essay-figure.ef-evolution .ef-branches>.ef-node:nth-child(2){--ef-accent:var(--violet,#b69cff)}
+.essay-figure.ef-evolution .ef-branches .ef-icon{margin-bottom:10px}
+@media(max-width:500px){
+  .essay-figure .ef-evolution-top{grid-template-columns:1fr}
+  .essay-figure .ef-evolution-top>.ef-node{padding:12px 13px}
+  .essay-figure .ef-evolution-top>.ef-node>strong{font-size:14px}
+  .essay-figure .ef-evolution-top>.ef-node>small{font-size:11.5px;margin-top:3px}
+  .essay-figure .ef-evolution-step{height:26px;transform:rotate(90deg)}
+  .essay-figure .ef-evolution-turn{height:29px}
+  .essay-figure .ef-evolution-turn::before{display:none}
+  .essay-figure .ef-evolution-turn>.ef-arrow{top:0;height:29px}
+}
+@media(max-width:430px){
+  .essay-figure.ef-evolution .ef-branches{grid-template-columns:1fr;padding-top:14px}
+  .essay-figure.ef-evolution .ef-branches::before{left:0;right:auto}
+  .essay-figure.ef-evolution .ef-branches::after{content:'';position:absolute;top:0;left:0;width:50%;border-top:1px solid var(--line-3)}
+  .essay-figure.ef-evolution .ef-branches .ef-icon{margin-bottom:0}
+}
