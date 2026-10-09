@@ -16,7 +16,7 @@
   },
   "editorialNotes": [
     "Retitled around LLMs, world models and where intelligence goes next; retained the original stable URL and publication date and added an explicit 9 October update date for new work including RoboJEPA.",
-    "Attributed the Forbes council article as an inspiration rather than treating its claims as empirical evidence.",
+    "The Forbes council article remains in the references as an inspiration rather than empirical evidence. At the author’s request, removed the opening inspiration paragraph naming Yifeng Yin and Fei-Fei Li and led with the impact of LLMs and long-horizon agents on digital work.",
     "Fei-Fei Li and World Labs are not characterized as pixel-only. Their account includes multimodal, implicit/explicit state and rendering, simulation and planning functions.",
     "Removed the old simulator/digital-twin table, RAG self-citation, old mandatory one-model-per-site architecture and separate checklist. Important challenges now appear briefly beside the proposed composition.",
     "The three figures explain common self-supervised roots, a deliberately evaluated training-feedback loop and one possible combination of goals, generated scenarios, predictive state and control. They are explanatory diagrams, not empirical charts or a claimed established complete system.",
