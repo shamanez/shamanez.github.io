@@ -77,30 +77,11 @@
 <p class="lead">LLMs and long-horizon agents have changed the landscape of digital work, from coding and research to longer workflows. So where does intelligence go next? I’m especially interested in how it extends into the physical world, and what still needs to be specific to a domain.</p>
 
 <h2 id="frontier-foundation-models">Frontier foundation models</h2>
-<h3 id="longer-work">General models, longer work</h3>
-<p>Claude Code, Codex and computer-use agents have changed how I think about digital work. We are moving from individual answers toward agents that use tools and carry tasks through many steps. METR’s measurements show growing task horizons on software tasks, measured against the time a human expert needs. That is evidence of progress in those tasks, with reliability still part of the picture. <a class="citation" href="#ref-4" aria-label="Reference 4">[4]</a></p>
-<p>Scaling is happening after pretraining too. Reinforcement learning (RL) improves behavior through rewards from attempted tasks. On-policy distillation (OPD) gives a student model teacher feedback on its own generated attempts. I see both as ways to scale capability through more practice and better learning signals. <a class="citation" href="#ref-12" aria-label="Reference 12">[12]</a> <a class="citation" href="#ref-13" aria-label="Reference 13">[13]</a></p>
-<p>There is also a possible feedback loop. More useful work produces more outcomes to evaluate. Good examples and failures can become training material. Better models can attempt harder work. The important step is deciding which feedback is actually useful. Usage alone does not make a model learn.</p>
-<figure class="essay-figure" id="figure-data-loop" aria-labelledby="figure-data-loop-caption">
-  <div class="ef-head"><span class="ef-id">01 / The feedback loop</span><span class="ef-label">Improvement takes work</span></div>
-  <div class="ef-canvas">
-    <div class="ef-loop">
-      <div class="ef-node"><span class="ef-label">01 / Attempt</span><strong>Longer tasks</strong><small>A model uses tools and takes steps</small></div>
-      <div class="ef-node"><span class="ef-label">02 / Observe</span><strong>Feedback</strong><small>Task rewards or teacher guidance</small></div>
-      <div class="ef-node ef-gate"><span class="ef-label">03 / Evaluate</span><strong>Check the signal</strong><small>Evaluate feedback quality</small></div>
-      <div class="ef-node"><span class="ef-label">04 / Update</span><strong>Post-train and test</strong><small>RL, OPD and evaluation on new tasks</small></div>
-    </div>
-    <div class="ef-return"><span>Try again with the updated model</span></div>
-  </div>
-  <figcaption id="figure-data-loop-caption">A conceptual training loop. RL and OPD use different feedback signals. Improvements need evaluation on new tasks. Using a model does not automatically retrain it.</figcaption>
-</figure>
-<p>That is why I expect general capability to keep improving. More useful work creates more opportunities to learn, when the feedback is good enough.</p>
-
 <h3 id="from-foundation-models">From self-supervised learning to omni models</h3>
 <p>Self-supervised learning gave us a way to learn from vast amounts of data and reuse that knowledge across tasks. Foundation models build on that idea. LLMs scaled it around language. Omni models bring text, vision and audio into the same system.</p>
 <p>Here I’m thinking about the frontier. Huge datasets, large models and substantial compute, with the ambition to handle more kinds of input and more kinds of work.</p>
 <figure class="essay-figure ef-foundations" id="figure-shared-roots" aria-labelledby="figure-shared-roots-caption">
-  <div class="ef-head"><span class="ef-id">02 / Frontier foundations</span><span class="ef-label">Learning at scale</span></div>
+  <div class="ef-head"><span class="ef-id">01 / Frontier foundations</span><span class="ef-label">Learning at scale</span></div>
   <div class="ef-canvas">
     <div class="ef-foundation-path">
       <div class="ef-node"><strong>Self-supervised learning</strong><small>Learn structure from data</small></div>
@@ -115,6 +96,25 @@
   </div>
   <figcaption id="figure-shared-roots-caption">The frontier-scale focus of this section. LLMs and omni models are forms of foundation models.</figcaption>
 </figure>
+
+<h3 id="longer-work">General models, longer work</h3>
+<p>Long-horizon agents build on that base intelligence. Claude Code, Codex and computer-use agents have changed how I think about digital work. We are moving from individual answers toward agents that use tools and carry tasks through many steps. METR’s measurements show growing task horizons on software tasks, measured against the time a human expert needs. That is evidence of progress in those tasks, with reliability still part of the picture. <a class="citation" href="#ref-4" aria-label="Reference 4">[4]</a></p>
+<p>Scaling is happening after pretraining too. Reinforcement learning (RL) improves behavior through rewards from attempted tasks. On-policy distillation (OPD) gives a student model teacher feedback on its own generated attempts. I see both as ways to scale capability through more practice and better learning signals. <a class="citation" href="#ref-12" aria-label="Reference 12">[12]</a> <a class="citation" href="#ref-13" aria-label="Reference 13">[13]</a></p>
+<p>There is also a possible feedback loop. More useful work produces more outcomes to evaluate. Good examples and failures can become training material. Better models can attempt harder work. The important step is deciding which feedback is actually useful. Usage alone does not make a model learn.</p>
+<figure class="essay-figure" id="figure-data-loop" aria-labelledby="figure-data-loop-caption">
+  <div class="ef-head"><span class="ef-id">02 / The feedback loop</span><span class="ef-label">Improvement takes work</span></div>
+  <div class="ef-canvas">
+    <div class="ef-loop">
+      <div class="ef-node"><span class="ef-label">01 / Attempt</span><strong>Longer tasks</strong><small>A model uses tools and takes steps</small></div>
+      <div class="ef-node"><span class="ef-label">02 / Observe</span><strong>Feedback</strong><small>Task rewards or teacher guidance</small></div>
+      <div class="ef-node ef-gate"><span class="ef-label">03 / Evaluate</span><strong>Check the signal</strong><small>Evaluate feedback quality</small></div>
+      <div class="ef-node"><span class="ef-label">04 / Update</span><strong>Post-train and test</strong><small>RL, OPD and evaluation on new tasks</small></div>
+    </div>
+    <div class="ef-return"><span>Try again with the updated model</span></div>
+  </div>
+  <figcaption id="figure-data-loop-caption">A conceptual training loop. RL and OPD use different feedback signals. Improvements need evaluation on new tasks. Using a model does not automatically retrain it.</figcaption>
+</figure>
+<p>That is why I expect general capability to keep improving. More useful work creates more opportunities to learn, when the feedback is good enough.</p>
 
 <h2 id="world-models">World models and their main approaches</h2>
 <p>A world model learns a representation of an environment or how it changes. It might reconstruct a space, predict a future observation, or estimate what could happen after an action. Two overlapping directions matter most for what I’m thinking about here. <a class="citation" href="#ref-3" aria-label="Reference 3">[3]</a> <a class="citation" href="#ref-7" aria-label="Reference 7">[7]</a></p>
