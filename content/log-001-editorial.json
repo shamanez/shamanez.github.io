@@ -6,7 +6,7 @@
   "publicationDate": "2026-10-05",
   "refinementDate": "2026-10-09",
   "canonicalUrl": "https://shamanez.github.io/blog/general-brains-domain-adapted-worlds.html",
-  "userDirection": "Explain where intelligence goes next, how language models and different world-model functions coexist, and why domain-specific prediction matters. Preserve the author’s concise personal tone, avoid em dashes and colons in visible prose, replace the simulator/digital-twin table and rigid model-per-site proposal with explanatory figures, and cite only important sources.",
+  "userDirection": "Explain where intelligence goes next, how language models and different world-model functions coexist, and why domain-specific prediction matters. Preserve the author’s concise personal tone, avoid em dashes and colons in visible prose, replace the simulator/digital-twin table and rigid model-per-site proposal with explanatory figures, and cite only important sources. The first section is Frontier foundation models. Within it, long-horizon digital agents and post-training through RL and OPD come before the frontier-scale SSL/foundation/LLM/omni progression. That entire section omits world-model discussion. World models are introduced only in a separate following section.",
   "researchAndEditorialReview": {
     "prose": "Separate essay_editor agent at the author’s explicit request",
     "latentResearch": "Separate latent_model_research agent verified primary papers and AMI Labs",
@@ -19,7 +19,6 @@
     "The Forbes council article remains in the references as an inspiration rather than empirical evidence. At the author’s request, removed the opening inspiration paragraph naming Yifeng Yin and Fei-Fei Li and led with the impact of LLMs and long-horizon agents on digital work.",
     "Fei-Fei Li and World Labs are not characterized as pixel-only. Their account includes multimodal, implicit/explicit state and rendering, simulation and planning functions.",
     "Removed the old simulator/digital-twin table, RAG self-citation, old mandatory one-model-per-site architecture and separate checklist. Important challenges now appear briefly beside the proposed composition.",
-    "The three figures explain the author’s conceptual progression from self-supervised learning through LLMs and omni LLMs to different world-model approaches, a deliberately evaluated training-feedback loop and one possible combination of goals, generated scenarios, predictive state and control. They are explanatory diagrams, not empirical charts or a claimed established complete system.",
     "The feedback loop is conditional. User interactions do not automatically retrain a model, and useful examples require evaluation before training and measurement afterwards.",
     "General software-task progress is grounded in METR time horizons defined against human task completion time, without claiming generalized reliability or AGI.",
     "Cosmos 3 and Odyssey-3 can supply policies/actions as well as scenarios. Cosmos 3 includes a 4B Edge variant. Large-lab advantage is an explicitly personal economic hypothesis, not a deterministic architectural claim.",
@@ -30,7 +29,10 @@
     "The LiDAR source establishes occupancy completion/forecasting evidence, not an action-conditioned driving controller. Other sensor panels are explicit design possibilities, not existing complete systems.",
     "A planner evaluates predicted consequences against a goal. A world model does not inherently supply utility, and the controller executes actions. Potential errors and runtime requirements remain relevant.",
     "Authored visible prose and figure text contain no em dashes or colons. Reference labels are concise descriptive titles linked to their exact sources.",
-    "At the author’s request, made the first section and figure explicitly follow Self-supervised learning → LLMs → Omni LLMs → Different types of world models. The figure describes widening capability rather than a required historical lineage, and notes that world models also developed alongside language models. Generative/spatial and latent predictive approaches can overlap."
+    "At the author’s request, Frontier foundation models is the first main section. General models, longer work and From self-supervised learning to omni models are subsections within it, in that order. World models and their main approaches follows as a separate main section. Existing section anchors remain valid.",
+    "The foundation-model section and figure strictly omit world models. They emphasize frontier-scale datasets, model size and compute without asserting all foundation or omni models must be large. LLMs and omni models are identified as foundation-model forms.",
+    "Four figures now explain evaluated post-training feedback, frontier foundation models, two overlapping world-model groupings, and a possible combined system. Generative/spatial and latent predictive models are discussion groupings, not an exhaustive or mutually exclusive taxonomy.",
+    "RL is described as learning from task rewards. OPD is expanded as on-policy distillation, where the student generates trajectories and a teacher provides guidance on those trajectories. These are distinct feedback mechanisms and neither is claimed to improve automatically or to eliminate reliability problems."
   ],
   "sources": [
     {
@@ -99,6 +101,17 @@
       "url": "https://arxiv.org/abs/2602.12540",
       "date": "2026-02-13",
       "supportedClaim": "AD-LiST-JEPA learns point-cloud representations evaluated for occupancy completion and forecasting; no claimed complete autonomous controller."
+    },
+    {
+      "title": "DeepSeek-AI. DeepSeek-R1",
+      "url": "https://arxiv.org/abs/2501.12948",
+      "supportedClaim": "Large-scale reinforcement learning can improve LLM reasoning after pretraining; rewards guide learning from attempted solutions."
+    },
+    {
+      "title": "Kevin Lu and Thinking Machines Lab. On-Policy Distillation",
+      "url": "https://thinkingmachines.ai/blog/on-policy-distillation/",
+      "date": "2025-10-27",
+      "supportedClaim": "Student-generated trajectories are evaluated using teacher guidance for on-policy post-training. No universal performance or compute-efficiency claim is made."
     }
   ]
 }
