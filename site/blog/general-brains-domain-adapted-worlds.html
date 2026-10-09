@@ -149,33 +149,45 @@
 <p>Yann LeCun’s AMI Labs is pursuing prediction in abstract representations of camera and other sensor data. I find that direction interesting because the useful state of a world does not have to look like a video. <a class="citation" href="#ref-9" aria-label="Reference 9">[9]</a></p>
 
 <h2 id="different-jobs">Different jobs, one system</h2>
-<p>This is how I currently connect the pieces. A language model helps set goals and coordinate tools. A generative or spatial world model provides environments, scenarios and possible futures. An action-conditioned predictor can help a planner compare the consequences of candidate actions using current observations. A policy or controller executes the chosen behavior.</p>
+<p>This is how I currently connect the pieces. The LLM turns a request into goals and coordinates the work. Generative or spatial world models provide scenes and scenarios to learn from or reason about. Latent predictive world models estimate what candidate actions could change. A planner uses that information to choose behavior, and a controller acts.</p>
 <figure class="essay-figure ef-system" id="figure-coexistence" aria-labelledby="figure-coexistence-caption">
-  <div class="ef-head"><span class="ef-id">04 / Different jobs</span><span class="ef-label">One possible composition</span></div>
+  <div class="ef-head"><span class="ef-id">04 / Different jobs, one system</span><span class="ef-label">One possible composition</span></div>
   <div class="ef-canvas">
-    <div class="ef-stage">
-      <div class="ef-stage-title"><span>During development</span><span>Build and test</span></div>
-      <div class="ef-development">
-        <div class="ef-node"><span class="ef-label">Generative / spatial worlds</span><strong>Explore possible scenarios</strong><small>Rich environments and training data</small></div>
-        <span class="ef-across" aria-hidden="true">→</span>
-        <div class="ef-node"><span class="ef-label">Policy development</span><strong>Train and evaluate behavior</strong><small>Check transfer to the real system</small></div>
-      </div>
-      <p class="ef-transfer">Validated policies can enter the operating loop ↓</p>
+    <div class="ef-node ef-language">
+      <span class="ef-label">Set the task</span><strong>LLM + tools</strong>
+      <small>Set goals and coordinate tools</small>
     </div>
-    <div class="ef-stage">
-      <div class="ef-stage-title"><span>During operation</span><span>Observe and act</span></div>
-      <div class="ef-goal"><strong>Language model + tools</strong><span>Goal and constraints → planner</span></div>
-      <div class="ef-operation">
-        <div class="ef-node ef-sense"><span class="ef-label">Observe</span><strong>Sensors + encoder</strong><small>Represent the current situation</small></div>
-        <div class="ef-state"><span class="ef-arrow" aria-hidden="true"></span><span>Encoded observations</span></div>
-        <div class="ef-node ef-predict"><span class="ef-label">Predict</span><strong>Action-conditioned latent model</strong><small>What could happen next?</small></div>
-        <div class="ef-exchange"><span class="ef-candidates">Candidate actions</span><span class="ef-consequences">Predicted consequences</span></div>
-        <div class="ef-node ef-plan"><span class="ef-label">Choose</span><strong>Planner</strong><small>Compare futures against the goal</small></div>
-        <div class="ef-decoder"><span>Optional decoding for inspection</span></div>
-        <div class="ef-controller"><div class="ef-arrow" aria-hidden="true"></div><div class="ef-node"><span class="ef-label">Execute</span><strong>Controller → machine</strong><small>Take the selected action</small></div></div>
+    <div class="ef-link"><span class="ef-arrow" aria-hidden="true"></span><span>Goals and constraints</span></div>
+    <div class="ef-node ef-dispatch"><strong>Planner + model interfaces</strong><small>Request scenarios and propose actions</small></div>
+    <div class="ef-model-lanes">
+      <div class="ef-model-lane ef-generative-lane">
+        <div class="ef-lane-input"><span aria-hidden="true">↓</span> Scene or scenario request</div>
+        <div class="ef-node ef-model-card">
+          <span class="ef-label">Explore environments</span>
+          <strong>Generative / spatial world model</strong>
+          <p class="ef-question">What situations could we encounter?</p>
+          <div class="ef-model-output"><span class="ef-label">Returns</span><span>Scenes, 3D structure or generated futures</span></div>
+        </div>
+        <div class="ef-lane-use"><strong>During development</strong><span>Scenarios → train policies → validate in reality</span><small>Or assess generated futures during planning.</small></div>
+        <div class="ef-lane-return"><span aria-hidden="true">↓</span> Scenario evidence / validated policies</div>
       </div>
-      <div class="ef-feedback"><span>↖ Observe the result</span><span>Real action, new observation ↵</span></div>
+      <div class="ef-model-lane ef-latent-lane">
+        <div class="ef-lane-input"><span aria-hidden="true">↓</span> Encoded observations + candidate actions</div>
+        <div class="ef-node ef-model-card">
+          <span class="ef-label">Predict consequences</span>
+          <strong>Latent predictive world model</strong>
+          <p class="ef-question">What if we take this action?</p>
+          <div class="ef-model-output"><span class="ef-label">Returns</span><span>Predicted future states</span></div>
+        </div>
+        <div class="ef-lane-use"><strong>During operation</strong><span>Predict candidate actions’ effects within the runtime budget</span><small>Adapted to this domain’s sensors and dynamics.</small></div>
+        <div class="ef-lane-return"><span aria-hidden="true">↓</span> Predicted action consequences</div>
+      </div>
     </div>
+    <div class="ef-node ef-decision"><span class="ef-label">Choose behavior</span><strong>Planner + available policies</strong><small>Compare model outputs against the goal</small></div>
+    <div class="ef-link"><span class="ef-arrow" aria-hidden="true"></span><span>Chosen behavior</span></div>
+    <div class="ef-node ef-action"><span class="ef-label">Execute</span><strong>Controller → physical system</strong><small>Act and observe the result</small></div>
+    <div class="ef-observation-loop"><span class="ef-label">Feedback</span><span>Observations → models and planner</span><span>Outcome summaries → LLM</span></div>
+    <p class="ef-timing">Models can run at different rates and stages. Every action need not call both world models.</p>
   </div>
   <div class="ef-domains">
     <span class="ef-label">Where the domain enters · explore a sensor</span>
@@ -184,7 +196,7 @@
     <details class="ef-domain" name="essay-sensors"><summary>Geospatial and multispectral data</summary><p><strong>Place, season and time scale.</strong> Predict useful changes from the available observations. Action effects need suitable interventions and training data.</p></details>
     <details class="ef-domain" name="essay-sensors"><summary>Industrial sensor streams</summary><p><strong>Process state and control inputs.</strong> Model the dynamics that matter for the equipment and operating conditions.</p></details>
   </div>
-  <figcaption id="figure-coexistence-caption">A possible way to connect the pieces. The roles can overlap. Sensor examples illustrate design choices, not established results for one complete system.</figcaption>
+  <figcaption id="figure-coexistence-caption">One possible composition. LLMs coordinate, world models supply predictions and scenarios, and planning connects them to action. Roles can overlap.</figcaption>
 </figure>
 <p>These are useful roles, not fixed model families. One model may cover several. A robot might call a predictor during planning, or use a policy trained with world-model rollouts and avoid that call at runtime. RoboJEPA’s optional video decoding and Cosmos’ policy outputs already cross the boundaries.</p>
 <p>The connection still needs work. Goals, observations and actions need compatible interfaces. Prediction errors grow over longer rollouts. And a useful deployment has to fit the latency and reliability requirements of the actual system.</p>
