@@ -4,19 +4,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#000000">
-  <title>General Brains, Domain-Adapted Worlds · Shamane’s Corner</title>
-  <meta name="description" content="Domain-adapted world models can improve simulations, digital twins and robot learning. One shared brain, locally grounded predictions.">
+  <title>LLMs, world models, and what comes next · Shamane’s Corner</title>
+  <meta name="description" content="Where intelligence goes next, how LLMs and world models can work together, and why domain-specific prediction still matters.">
   <meta name="author" content="Shamane Siriwardhana">
   <meta name="log-id" content="001">
-  <meta name="blog-title" content="General Brains, Domain-Adapted Worlds">
+  <meta name="blog-title" content="LLMs, world models, and what comes next">
   <meta name="blog-date" content="2026-10-05">
   <meta name="blog-tags" content="WORLD MODELS / DOMAIN ADAPTATION / PHYSICAL AI">
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <link rel="preload" href="/assets/geist.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/geist-mono.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="/assets/essay.css">
+  <link rel="canonical" href="https://shamanez.github.io/blog/general-brains-domain-adapted-worlds.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="LLMs, world models, and what comes next">
+  <meta property="og:description" content="Where intelligence goes next, how LLMs and world models can work together, and why domain-specific prediction still matters.">
+  <meta property="og:url" content="https://shamanez.github.io/blog/general-brains-domain-adapted-worlds.html">
+  <meta property="article:published_time" content="2026-10-05">
+  <meta property="article:modified_time" content="2026-10-09">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"LLMs, world models, and what comes next","datePublished":"2026-10-05","dateModified":"2026-10-09","author":{"@type":"Person","name":"Shamane Siriwardhana","url":"https://shamanez.github.io/"},"mainEntityOfPage":"https://shamanez.github.io/blog/general-brains-domain-adapted-worlds.html"}</script>
   <script>document.documentElement.classList.add('js')</script>
   <script src="/assets/site.js" defer></script>
+  <script src="/assets/essay.js" defer></script>
 </head>
 <body class="article-page">
   <a class="skip-link" href="#article">Skip to article</a>
@@ -28,9 +39,9 @@
         <span class="brand-name">Shamane <span class="long">Siriwardhana</span></span>
       </a>
       <nav class="nav-tabs" aria-label="Sections">
-        <a href="/#story">Story <span>01</span></a>
-        <a href="/#research">Research <span>02</span></a>
-        <a class="is-active" href="/#writing">Writing <span>03</span></a>
+        <a class="is-active" href="/#writing">Writing <span>01</span></a>
+        <a href="/#story">Story <span>02</span></a>
+        <a href="/#research">Research <span>03</span></a>
         <a href="/#code">Open source <span>04</span></a>
       </nav>
       <div class="nav-right">
@@ -41,9 +52,9 @@
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><span></span></button>
     </div>
     <div class="mobile-menu" id="mobile-menu">
-      <a href="/#story">Story <span>01</span></a>
-      <a href="/#research">Research <span>02</span></a>
-      <a href="/#writing">Writing <span>03</span></a>
+      <a href="/#writing">Writing <span>01</span></a>
+      <a href="/#story">Story <span>02</span></a>
+      <a href="/#research">Research <span>03</span></a>
       <a href="/#code">Open source <span>04</span></a>
       <div class="menu-links">
         <a href="https://scholar.google.com/citations?user=8TAf2IMAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Scholar ↗</a>
@@ -53,103 +64,139 @@
     </div>
   </header>
     <main id="article">
-      <header class="article-header"><a class="article-return" href="/#corner">[ Back to the corner ]</a><p class="eyebrow purple">LOG 001 / WORLD MODELS / DOMAIN ADAPTATION / PHYSICAL AI</p><h1>General brains,<br>domain-adapted worlds.</h1><p class="article-deck">One shared brain, one adapted world model per site. My bet on the next chapter of domain adaptation, and how learned world models can improve simulations, digital twins and physical AI.</p><div class="article-byline"><span>Shamane Siriwardhana</span><time datetime="2026-10-05">05 October 2026</time><span data-reading-time>10 min read</span></div></header>
+      <header class="article-header">
+        <a class="article-return" href="/#writing">[ Back to the corner ]</a>
+        <p class="eyebrow purple">LOG 001 / WORLD MODELS / DOMAIN ADAPTATION / PHYSICAL AI</p>
+        <h1>LLMs, world models,<br>and what comes next.</h1>
+        <p class="article-deck">LLMs keep getting better. I think the next question is how their intelligence connects to the worlds where we use it.</p>
+        <div class="article-byline"><span>Shamane Siriwardhana</span><time datetime="2026-10-05">05 October 2026</time><span>Updated <time datetime="2026-10-09">09 October 2026</time></span><span data-reading-time>7 min read</span></div>
+      </header>
       <div class="article-layout">
-        <nav class="article-toc" aria-label="In this essay"><p>IN THIS LOG</p><a href="#from-foundation-models">From self-supervised foundation models to world models</a><a href="#intelligence-is-going-general">Intelligence is going general</a><a href="#then-comes-the-physical-world">Then comes the physical world</a><a href="#world-models-simulation-and-twins">World models, simulators and digital twins</a><a href="#so-this-is-my-concept">So this is my concept</a><a href="#why-this-is-the-place">Why this is the place I want to be</a><a href="#what-still-has-to-work">What still has to work</a><a href="#references">References</a></nav>
+        <nav class="article-toc" aria-label="In this essay"><p>IN THIS LOG</p><a href="#from-foundation-models">From self-supervision to world models</a><a href="#longer-work">General models, longer work</a><a href="#worlds-we-can-see">Worlds we can see</a><a href="#predicting-what-matters">Predicting what matters</a><a href="#different-jobs">Different jobs, one system</a><a href="#domain-specific">Where domain adaptation goes next</a><a href="#references">References</a></nav>
         <article class="prose">
-<p class="lead">Intelligence feels increasingly general now, right? But physical AI is a different story. So this is my bet. Domain adaptation is not dead. A major part of its next chapter will be in world models that understand the particular places where machines act.</p>
+<p class="lead">LLMs changed what I expect from a general model. Now I keep coming back to a different question. Where does intelligence go from here, and what still needs to be specific to a domain?</p>
+<p>Yifeng Yin’s essay on why we need world models alongside LLMs helped shape this question. So did Fei-Fei Li’s argument for spatial intelligence. I see room for these capabilities to grow together, with different models doing different parts of the work. <a class="citation" href="#ref-1" aria-label="Reference 1">[1]</a> <a class="citation" href="#ref-2" aria-label="Reference 2">[2]</a></p>
 
-<h2 id="from-foundation-models">From self-supervised foundation models to world models</h2>
-<p>Self-supervised learning gave us a powerful recipe. Pretrain on large amounts of unlabeled text, vision or speech, then reuse the representations or adapt the model. Domain adaptation was part of my own work on RAG, helping a general system work with knowledge from a particular domain. <a class="citation" href="#ref-1" aria-label="Reference 1: Siriwardhana et al. (2023). Improving the Domain Adaptation of Retrieval Augmented Generation (RAG) Models for Open Domain Question Answering. TACL.">[1]</a></p>
-<p>Then autoregressive language models scaled up: GPT-2, GPT-3, Llama, GPT-4. The big thing happened when these transformers became useful across more and more tasks without a separate model for each one. <a class="citation" href="#ref-2" aria-label="Reference 2: Brown et al. (2020). Language Models are Few-Shot Learners.">[2]</a> <a class="citation" href="#ref-3" aria-label="Reference 3: OpenAI (2023). GPT-4 Technical Report.">[3]</a></p>
-<p>World models were developing alongside them. Ha and Schmidhuber showed how a learned, compressed model of an environment could support an agent trained in imagination. Dreamer 3 later worked across more than 150 tasks with one algorithm configuration. <a class="citation" href="#ref-4" aria-label="Reference 4: Ha and Schmidhuber (2018). World Models.">[4]</a> <a class="citation" href="#ref-5" aria-label="Reference 5: Hafner et al. (2025). Mastering diverse control tasks through world models. Nature.">[5]</a></p>
-<p>Now that work is much more visible. Genie 3 generates interactive environments in real time. Dreamer 4 trains behaviors inside a learned world model, drawing much of its knowledge from unlabeled video. Its demonstration is in Minecraft. World Labs presents Atlas as a model for generation, reconstruction and space-time simulation. The generalization arc that language went through is starting to appear in physical and spatial AI too. <a class="citation" href="#ref-6" aria-label="Reference 6: Google DeepMind (2025). Genie 3: A new frontier for world models.">[6]</a> <a class="citation" href="#ref-7" aria-label="Reference 7: Hafner, Yan and Lillicrap (2025). Training Agents Inside of Scalable World Models (Dreamer 4).">[7]</a> <a class="citation" href="#ref-8" aria-label="Reference 8: World Labs (2026). Atlas: A World Model for Spatial Intelligence.">[8]</a></p>
-
-<h2 id="intelligence-is-going-general">Intelligence is going general</h2>
-<p>Claude Code, Codex and computer-use agents have changed what I expect from a general model. They can handle longer sequences of work, and that is a big shift. METR's 2025 study found that the task horizon reached at 50% success had historically doubled roughly every seven months on its software and reasoning tasks, with task length measured by human completion time. That is a benchmark trend, not a promise that every job is automated. <a class="citation" href="#ref-9" aria-label="Reference 9: METR (2025). Measuring AI Ability to Complete Long Software Tasks.">[9]</a></p>
-<p>For many projects, my default is increasingly to use a strong shared model rather than host a language model just to save on tokens. Open-weight and smaller models still matter when privacy, cost at scale, offline operation or customization make them the right choice. But competing on general language intelligence alone is a hard place to build a lasting advantage.</p>
-<p>So where does domain-specific work live next? For me, the interesting question is moving beyond another fine-tuning service or another agent wrapper. What does the general brain still need when it leaves the screen?</p>
-
-<h2 id="then-comes-the-physical-world">Then comes the physical world</h2>
-<p>It is clear to me that physical AI is a huge next chapter. Warehouses, farms, factories and hospitals are full of work that cannot be finished with a browser click.</p>
-<p>With robots come simulators, digital twins and all the tools for describing and testing a physical system. A strong language model can help reason about goals and coordinate those tools. Small language models can play useful roles too. But language capability alone does not tell a robot how an unfamiliar surface, payload or contact will behave. <a class="citation" href="#ref-10" aria-label="Reference 10: Belcak et al. (2025). Small Language Models are the Future of Agentic AI.">[10]</a></p>
-<p>What the big brain needs is a reliable way to ask: <em>What happens here if this machine takes this action?</em> That is where I see learned world models adding something specific.</p>
-
-<h2 id="world-models-simulation-and-twins">World models, simulators and digital twins</h2>
-<p>Here, by <em>learned world model</em>, I mean a model trained to predict how an environment changes, often conditioned on actions. That prediction can be a video, a structured state or a compact latent representation. It is useful because an agent can compare possible futures before choosing what to do. <a class="citation" href="#ref-15" aria-label="Reference 15: Hou et al. (2026). World Model for Robot Learning: A Comprehensive Survey.">[15]</a></p>
-<p>Generative models such as Genie 3, Atlas and Cosmos emphasize rich visual or spatial predictions. Latent approaches such as Dreamer, TD-MPC2 and V-JEPA 2-AC let planning or policy learning happen in a learned representation rather than requiring a rendered movie for every candidate future. These are overlapping approaches, and both can be made specific to an application. <a class="citation" href="#ref-5" aria-label="Reference 5: Hafner et al. (2025). Mastering diverse control tasks through world models. Nature.">[5]</a> <a class="citation" href="#ref-6" aria-label="Reference 6: Google DeepMind (2025). Genie 3: A new frontier for world models.">[6]</a> <a class="citation" href="#ref-8" aria-label="Reference 8: World Labs (2026). Atlas: A World Model for Spatial Intelligence.">[8]</a> <a class="citation" href="#ref-11" aria-label="Reference 11: Hansen, Su and Wang (2024). TD-MPC2: Scalable, Robust World Models for Continuous Control.">[11]</a> <a class="citation" href="#ref-12" aria-label="Reference 12: Assran et al. (2025). V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning.">[12]</a> <a class="citation" href="#ref-19" aria-label="Reference 19: NVIDIA et al. (2025). Cosmos World Foundation Model Platform for Physical AI.">[19]</a></p>
-<p>A simulator and a digital twin sit at a different level. A simulator runs an environment using engineered dynamics, learned dynamics or a mixture. A digital twin represents a particular real system and stays connected to information about that system. Neither term, by itself, specifies a learned world-model architecture. A world model can be a component that improves either workflow. <a class="citation" href="#ref-13" aria-label="Reference 13: Taylor et al. (2023). Enhancing Digital Twins with Advances in Simulation and Artificial Intelligence: Opportunities and Challenges. Winter Simulation Conference / NIST.">[13]</a></p>
-<div class="article-table" role="region" aria-labelledby="world-model-tools-caption" tabindex="0">
-<table><caption id="world-model-tools-caption">How learned world models can improve existing tools</caption><thead><tr><th scope="col">Tool</th><th scope="col">Its role</th><th scope="col">What a learned world model can add</th></tr></thead><tbody><tr><th scope="row">Simulator</th><td><span class="table-mobile-label" aria-hidden="true">ITS ROLE</span>Run an environment to train, test or compare behavior.</td><td><span class="table-mobile-label" aria-hidden="true">WHAT A WORLD MODEL CAN ADD</span>Learn dynamics corrections or generate richer, more varied observations.</td></tr><tr><th scope="row">Digital twin</th><td><span class="table-mobile-label" aria-hidden="true">ITS ROLE</span>Represent a particular physical system using its models and real observations.</td><td><span class="table-mobile-label" aria-hidden="true">WHAT A WORLD MODEL CAN ADD</span>Improve local predictions alongside the twin’s engineering models and data.</td></tr></tbody></table>
-</div>
-<p>Take a warehouse twin with its geometry, conveyor layout and robot kinematics. A learned world model could improve predictions about how boxes move, or learn residual corrections where simulated dynamics disagree with real observations. ReDRAW demonstrates that kind of correction in latent dynamics. For a different contribution, Cosmos can turn controlled Omniverse 3D scenarios into richer visual training data. Better dynamics and more varied observations can both improve simulation and twin workflows. They address different gaps. <a class="citation" href="#ref-14" aria-label="Reference 14: NVIDIA (2025). NVIDIA Launches Cosmos World Foundation Model Platform to Accelerate Physical AI Development.">[14]</a> <a class="citation" href="#ref-21" aria-label="Reference 21: Lanier et al. (2026, preprint 2025). Adapting World Models with Latent-State Dynamics Residuals (ReDRAW). L4DC / PMLR.">[21]</a></p>
-<p>That is the relationship I mean. World models augment simulations and digital twins. The existing geometry, engineering constraints and connection to the real system still matter. A plausible generated future is not automatically a physically accurate one.</p>
-
-<h2 id="so-this-is-my-concept">So this is my concept</h2>
-<p><strong>One shared brain, one adapted world model per site.</strong></p>
-<p>A warehouse floor, a surgical robot and a strawberry farm share some physics, but differ in their objects, contacts, sensors and operating conditions. Useful knowledge should transfer. The remaining mismatch is where local data and adaptation can matter.</p>
-<p>There are several kinds of specificity here. A <em>domain</em> might be warehouse manipulation. A <em>task</em> might be picking a box. A <em>site</em> adds the actual camera setup, floor, payloads and changing conditions. Adapting the world model means improving its predictions for those conditions. Adapting the policy means improving how the robot acts. They can support each other, but they are different jobs.</p>
-<p>The general reasoning layer can stay shared. A local world model supplies predictions relevant to its site, and the robot's controller executes the actions. The cloud brain can set goals and ask for lookahead without becoming the machine's entire control loop.</p>
-
-<figure class="architecture-diagram" aria-label="Proposed architecture. Shared general reasoning calls adapted world models for a warehouse, factory line and farm. The predictions support robot planning and simulation or digital twin workflows">
-  <div class="architecture-brain">SHARED GENERAL BRAIN<span class="architecture-caption">Goals · reasoning · tool calls</span></div>
-  <div class="architecture-connector" aria-hidden="true"></div>
-  <div class="architecture-worlds"><div>WAREHOUSE<small>Adapted predictive model</small></div><div>FACTORY LINE<small>Adapted predictive model</small></div><div>FARM<small>Adapted predictive model</small></div></div>
-  <div class="architecture-adaptation"><span>ADAPTATION INPUTS</span><p>General bases · simulation · local observations</p></div>
-  <div class="architecture-uses"><span>ROBOT PLANNING</span><span>SIMULATION &amp; DIGITAL TWINS</span></div>
-  <figcaption>A proposed architecture. Adapted predictions inform robot planners and can improve simulations and digital twins. The robot’s controller remains responsible for execution.</figcaption>
+<h2 id="from-foundation-models">From self-supervision to world models</h2>
+<p>Self-supervised learning gave us a way to learn reusable representations from text, images, video and other signals. Scaling that recipe helped language models become useful across tasks. World models developed alongside them, learning the structure of an environment or how it changes.</p>
+<p>The connection is prediction. A language model can help describe a goal and plan through tools. A world model can represent a space or predict a future state. For choosing actions, the important question becomes <em>what changes if I do this?</em></p>
+<figure class="essay-figure" id="figure-shared-roots" aria-labelledby="figure-shared-roots-caption">
+  <div class="ef-head"><span class="ef-id">01 / Shared roots</span><span class="ef-label">Different predictions</span></div>
+  <div class="ef-canvas">
+    <p class="ef-data">Text · images · video · sensor streams</p>
+    <div class="ef-root ef-node"><span class="ef-label">Self-supervised learning</span><strong>Learn reusable representations</strong><small>Learn structure from the data itself</small></div>
+    <div class="ef-arrow" aria-hidden="true"></div>
+    <div class="ef-branches">
+      <div class="ef-node">
+        <svg class="ef-icon" viewBox="0 0 48 35" aria-hidden="true"><path class="ef-muted" d="M2 4h29v21H12l-6 6v-6H2z"/><path d="M8 10h17M8 15h10M8 20h14"/><path class="ef-signal" d="M37 11h8v19h-20v-2M32 17h7M32 22h7"/></svg>
+        <strong>Language + tools</strong><small>Reason and coordinate</small>
+      </div>
+      <div class="ef-node">
+        <svg class="ef-icon" viewBox="0 0 48 35" aria-hidden="true"><path class="ef-muted" d="M1 28h46M5 21h38M11 14h26M17 7h14M24 1v32M13 6l-7 27M35 6l7 27"/><path class="ef-signal" d="m16 12 8-4 8 4v10l-8 4-8-4zM16 12l8 4 8-4M24 16v10"/></svg>
+        <strong>Rendered / spatial worlds</strong><small>Generate and explore</small>
+      </div>
+      <div class="ef-node">
+        <svg class="ef-icon" viewBox="0 0 48 35" aria-hidden="true"><path class="ef-muted" d="M6 7 24 17 6 29M6 7 40 5 24 17 41 30 6 29M24 17 43 17"/><g class="ef-signal"><circle cx="6" cy="7" r="3"/><circle cx="6" cy="29" r="3"/><circle cx="24" cy="17" r="4"/><circle cx="40" cy="5" r="2"/><circle cx="43" cy="17" r="2"/><circle cx="41" cy="30" r="2"/></g></svg>
+        <strong>Latent prediction</strong><small>Anticipate and plan</small>
+      </div>
+    </div>
+    <p class="ef-shared">Shared foundations → adaptation to tasks and domains</p>
+  </div>
+  <figcaption id="figure-shared-roots-caption">One learning recipe, several useful directions. These roles overlap and can work together.</figcaption>
 </figure>
 
-<p>I see three useful roles for that local model:</p>
-<ol>
-<li><strong>Lookahead.</strong> Predict the outcomes of candidate actions before execution. WebDreamer explores a similar idea for web agents. Applying it to robots requires grounding the predictions in physical observations and actions. <a class="citation" href="#ref-16" aria-label="Reference 16: Gu et al. (2025). Is Your LLM Secretly a World Model of the Internet? Model-Based Planning for Web Agents.">[16]</a></li>
-<li><strong>Training and evaluation.</strong> Give policies an imagined environment in which to learn or be compared before real trials. Dreamer demonstrates imagination training, and GigaWorld-1 focuses on world models for robot policy evaluation. Neither removes the need to validate on the real machine. <a class="citation" href="#ref-5" aria-label="Reference 5: Hafner et al. (2025). Mastering diverse control tasks through world models. Nature.">[5]</a> <a class="citation" href="#ref-18" aria-label="Reference 18: GigaWorld Team et al. (2026). GigaWorld-1: A Roadmap to Build World Models for Robot Policy Evaluation.">[18]</a></li>
-<li><strong>Progress estimation.</strong> With a goal representation or a learned reward/value model, help estimate whether a predicted state moves the task forward. A predictor does not automatically know what “good” means. That objective has to enter the system. <a class="citation" href="#ref-12" aria-label="Reference 12: Assran et al. (2025). V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning.">[12]</a> <a class="citation" href="#ref-20" aria-label="Reference 20: Levy et al. (2026). Simulation Distillation: Pretraining World Models in Simulation for Rapid Real-World Adaptation (SimDist).">[20]</a></li>
-</ol>
-<p>There are already concrete routes to adaptation. Cosmos provides pretrained models and post-training examples. V-JEPA 2 starts with action-free video pretraining. V-JEPA 2-AC then learns an action-conditioned predictor on a frozen encoder using under 62 hours of DROID robot interaction video. It planned pick-and-place actions in two new labs without target-site training. That is encouraging evidence for transfer, not evidence that every site must start from scratch. <a class="citation" href="#ref-12" aria-label="Reference 12: Assran et al. (2025). V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning.">[12]</a> <a class="citation" href="#ref-19" aria-label="Reference 19: NVIDIA et al. (2025). Cosmos World Foundation Model Platform for Physical AI.">[19]</a></p>
-<p>Another route starts with simulation. SimDist transfers its encoder, reward model and value function, then updates the latent dynamics from real observations. ReDRAW learns residual corrections to a simulation-pretrained world model with limited target data. These are concrete examples of adapting physical predictions. My bet is that this becomes a repeatable deployment practice as sites change. <a class="citation" href="#ref-20" aria-label="Reference 20: Levy et al. (2026). Simulation Distillation: Pretraining World Models in Simulation for Rapid Real-World Adaptation (SimDist).">[20]</a> <a class="citation" href="#ref-21" aria-label="Reference 21: Lanier et al. (2026, preprint 2025). Adapting World Models with Latent-State Dynamics Residuals (ReDRAW). L4DC / PMLR.">[21]</a></p>
-<p>“One per site” is the architecture I am betting on. It could mean a shared base with a small local adapter, a calibrated dynamics module or a locally updated model. The important thing is that the system knows where its general predictions stop being accurate.</p>
+<h2 id="longer-work">General models, longer work</h2>
+<p>Claude Code, Codex and computer-use agents have changed my expectations again. The work is getting longer. METR’s measurements show growing task horizons on software tasks, measured against the time a human expert needs. That is evidence of progress in those tasks, with reliability still part of the picture. <a class="citation" href="#ref-4" aria-label="Reference 4">[4]</a></p>
+<p>There is also a possible feedback loop. More useful work produces more outcomes to evaluate. Good examples and failures can become training material. Better models can attempt harder work. The important step is deciding which feedback is actually useful. Usage alone does not make a model learn.</p>
+<figure class="essay-figure" id="figure-data-loop" aria-labelledby="figure-data-loop-caption">
+  <div class="ef-head"><span class="ef-id">02 / The feedback loop</span><span class="ef-label">Improvement takes work</span></div>
+  <div class="ef-canvas">
+    <div class="ef-loop">
+      <div class="ef-node"><span class="ef-label">01 / Attempt</span><strong>Longer tasks</strong><small>A model uses tools and takes steps</small></div>
+      <div class="ef-node"><span class="ef-label">02 / Observe</span><strong>Real outcomes</strong><small>Traces, failures and feedback</small></div>
+      <div class="ef-node ef-gate"><span class="ef-label">03 / Evaluate</span><strong>Select useful data</strong><small>Check quality before training</small></div>
+      <div class="ef-node"><span class="ef-label">04 / Update</span><strong>Train and test</strong><small>Measure whether capability improved</small></div>
+    </div>
+    <div class="ef-return"><span>Try again with the updated model</span></div>
+  </div>
+  <figcaption id="figure-data-loop-caption">More work can create more learning signals. The loop needs evaluation and deliberate updates. Using a model does not automatically retrain it.</figcaption>
+</figure>
+<p>So I expect general capability to keep improving. But a model that can organize a project still needs grounded information about the environment where its decisions matter.</p>
 
-<h2 id="why-this-is-the-place">Why this is the place I want to be</h2>
-<p>Three reasons.</p>
-<p><strong>First, the data.</strong> The internet does not tell you exactly how your conveyor belt behaves today. Local video, telemetry and action outcomes expose the errors that matter at that site. The advantage is turning that experience into better predictions and keeping them current.</p>
-<p><strong>Second, latency.</strong> Hosting a language model only to shave token costs is less interesting to me than putting a useful predictive model near the robot. Local inference can avoid a network round trip where timing matters. But “300M” is not a universal size target: V-JEPA 2-AC's approximately 300M predictor still uses a larger encoder. The whole perception, planning and control pipeline has to meet the application's timing budget. <a class="citation" href="#ref-12" aria-label="Reference 12: Assran et al. (2025). V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning.">[12]</a></p>
-<p><strong>Third, the adaptation surface.</strong> We do not necessarily need to retrain everything. A frozen encoder with an adapted predictor, dynamics-only updates in SimDist, or residual corrections in ReDRAW can reuse general knowledge while changing the part that is wrong locally. That is the kind of domain adaptation I want to build. <a class="citation" href="#ref-12" aria-label="Reference 12: Assran et al. (2025). V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning.">[12]</a> <a class="citation" href="#ref-20" aria-label="Reference 20: Levy et al. (2026). Simulation Distillation: Pretraining World Models in Simulation for Rapid Real-World Adaptation (SimDist).">[20]</a> <a class="citation" href="#ref-21" aria-label="Reference 21: Lanier et al. (2026, preprint 2025). Adapting World Models with Latent-State Dynamics Residuals (ReDRAW). L4DC / PMLR.">[21]</a></p>
+<h2 id="worlds-we-can-see">Worlds we can see</h2>
+<p>One direction is becoming very visible. Generate a scene, move through it, imagine what happens next. Fei-Fei Li’s spatial intelligence argument extends beyond pixels, and World Labs’ taxonomy separates the functions of rendering, simulation and planning while showing how they connect. <a class="citation" href="#ref-2" aria-label="Reference 2">[2]</a> <a class="citation" href="#ref-3" aria-label="Reference 3">[3]</a></p>
+<p>Cosmos 3 and Odyssey-3 show how broad this direction is becoming. Such systems can supply varied scenarios for training and evaluation. They can also learn policies and generate actions. Their role can extend from generating training scenarios to supplying deployed policies. <a class="citation" href="#ref-5" aria-label="Reference 5">[5]</a> <a class="citation" href="#ref-6" aria-label="Reference 6">[6]</a></p>
+<p>My feeling is that broad coverage and expensive training give large labs an advantage here. But size and deployment are separate choices. Cosmos 3 includes a 4B Edge variant. <a class="citation" href="#ref-5" aria-label="Reference 5">[5]</a> And a world that looks convincing still needs to predict the consequences of actions well enough for its intended use.</p>
 
-<h2 id="what-still-has-to-work">What still has to work</h2>
-<p>I am not pretending this is solved. Prediction errors compound over long rollouts. Contact, deformable objects and unfamiliar conditions remain hard. GigaWorld-1 finds that action-faithful, consistent rollouts matter more for policy evaluation than pretty short clips. RepWAM's results also suggest that representations useful for action can matter more than optimizing pixel reconstruction alone. <a class="citation" href="#ref-18" aria-label="Reference 18: GigaWorld Team et al. (2026). GigaWorld-1: A Roadmap to Build World Models for Robot Policy Evaluation.">[18]</a> <a class="citation" href="#ref-22" aria-label="Reference 22: Wang et al. (2026). RepWAM: World Action Modeling with Representation Visual-Action Tokenizers.">[22]</a></p>
-<p>The interface between the big brain and the world model is still an engineering question. I want a tool that takes the current observations, candidate actions and a goal, then returns useful consequences, scores and uncertainty where that uncertainty is calibrated. WorldEvolver explores memory revision and filtering low-confidence foresight in text-based agent environments. That is a useful design clue, not a finished robotics interface. <a class="citation" href="#ref-17" aria-label="Reference 17: Zhang et al. (2026). Self-Evolving World Models for LLM Agent Planning (WorldEvolver).">[17]</a></p>
-<p>But none of that changes where I see the work. General models will keep improving. The world under each robot will keep changing. Someone has to close that gap. Improve the predictions, strengthen the simulations and digital twins they support, and make those predictions useful to the agent.</p>
-<p>General brains, domain-adapted worlds. That is my bet.</p>
+<h2 id="predicting-what-matters">Predicting what matters</h2>
+<p>JEPA-style models make another choice. They predict learned representations. That target need not reconstruct every leaf moving behind a robot. It can focus on what the representation preserves. The hard part is keeping small details that matter to the task, such as contact or geometry.</p>
+<p>This can reduce the burden of prediction, but it does not guarantee fewer parameters, less data or fast on-device control. Generative models also use latent representations internally. The useful distinction is what the model is trained to predict and how that prediction is used.</p>
+<p>V-JEPA 2-AC demonstrated action-conditioned prediction and robot planning. More recently, RoboJEPA scaled its predictor to 8B parameters and reported planning that takes seconds on multiple GPUs. It also decoded predicted latent states into video. That is a useful reminder that latent prediction, scale and rendering can coexist. <a class="citation" href="#ref-7" aria-label="Reference 7">[7]</a> <a class="citation" href="#ref-8" aria-label="Reference 8">[8]</a></p>
+<p>Yann LeCun’s AMI Labs is pursuing prediction in abstract representations of camera and other sensor data. I find that direction interesting because the useful state of a world does not have to look like a video. <a class="citation" href="#ref-9" aria-label="Reference 9">[9]</a></p>
+
+<h2 id="different-jobs">Different jobs, one system</h2>
+<p>This is how I currently connect the pieces. A language model helps set goals and coordinate tools. A generative or spatial world model provides environments, scenarios and possible futures. An action-conditioned predictor can help a planner compare the consequences of candidate actions using current observations. A policy or controller executes the chosen behavior.</p>
+<figure class="essay-figure ef-system" id="figure-coexistence" aria-labelledby="figure-coexistence-caption">
+  <div class="ef-head"><span class="ef-id">03 / Different jobs</span><span class="ef-label">One possible composition</span></div>
+  <div class="ef-canvas">
+    <div class="ef-stage">
+      <div class="ef-stage-title"><span>During development</span><span>Build and test</span></div>
+      <div class="ef-development">
+        <div class="ef-node"><span class="ef-label">Generative / spatial worlds</span><strong>Explore possible scenarios</strong><small>Rich environments and training data</small></div>
+        <span class="ef-across" aria-hidden="true">→</span>
+        <div class="ef-node"><span class="ef-label">Policy development</span><strong>Train and evaluate behavior</strong><small>Check transfer to the real system</small></div>
+      </div>
+      <p class="ef-transfer">Validated policies can enter the operating loop ↓</p>
+    </div>
+    <div class="ef-stage">
+      <div class="ef-stage-title"><span>During operation</span><span>Observe and act</span></div>
+      <div class="ef-goal"><strong>Language model + tools</strong><span>Goal and constraints → planner</span></div>
+      <div class="ef-operation">
+        <div class="ef-node ef-sense"><span class="ef-label">Observe</span><strong>Sensors + encoder</strong><small>Represent the current situation</small></div>
+        <div class="ef-state"><span class="ef-arrow" aria-hidden="true"></span><span>Encoded observations</span></div>
+        <div class="ef-node ef-predict"><span class="ef-label">Predict</span><strong>Action-conditioned latent model</strong><small>What could happen next?</small></div>
+        <div class="ef-exchange"><span class="ef-candidates">Candidate actions</span><span class="ef-consequences">Predicted consequences</span></div>
+        <div class="ef-node ef-plan"><span class="ef-label">Choose</span><strong>Planner</strong><small>Compare futures against the goal</small></div>
+        <div class="ef-decoder"><span>Optional decoding for inspection</span></div>
+        <div class="ef-controller"><div class="ef-arrow" aria-hidden="true"></div><div class="ef-node"><span class="ef-label">Execute</span><strong>Controller → machine</strong><small>Take the selected action</small></div></div>
+      </div>
+      <div class="ef-feedback"><span>↖ Observe the result</span><span>Real action, new observation ↵</span></div>
+    </div>
+  </div>
+  <div class="ef-domains">
+    <span class="ef-label">Where the domain enters · explore a sensor</span>
+    <details class="ef-domain" name="essay-sensors"><summary>Robot cameras</summary><p><strong>Objects, contacts and motion.</strong> Adapt predictions to the robot, tools, camera setup and task.</p></details>
+    <details class="ef-domain" name="essay-sensors"><summary>LiDAR point clouds</summary><p><strong>Geometry and occupancy.</strong> Learn representations for motion or traversability without rendering every point at each planning step.</p></details>
+    <details class="ef-domain" name="essay-sensors"><summary>Geospatial and multispectral data</summary><p><strong>Place, season and time scale.</strong> Predict useful changes from the available observations. Action effects need suitable interventions and training data.</p></details>
+    <details class="ef-domain" name="essay-sensors"><summary>Industrial sensor streams</summary><p><strong>Process state and control inputs.</strong> Model the dynamics that matter for the equipment and operating conditions.</p></details>
+  </div>
+  <figcaption id="figure-coexistence-caption">A possible way to connect the pieces. The roles can overlap. Sensor examples illustrate design choices, not established results for one complete system.</figcaption>
+</figure>
+<p>These are useful roles, not fixed model families. One model may cover several. A robot might call a predictor during planning, or use a policy trained with world-model rollouts and avoid that call at runtime. RoboJEPA’s optional video decoding and Cosmos’ policy outputs already cross the boundaries.</p>
+<p>The connection still needs work. Goals, observations and actions need compatible interfaces. Prediction errors grow over longer rollouts. And a useful deployment has to fit the latency and reliability requirements of the actual system.</p>
+
+<h2 id="domain-specific">Where domain adaptation goes next</h2>
+<p>This is the part I want to work on. A warehouse camera, a LiDAR point cloud, a satellite image and a machine’s sensor stream expose different information. Predicting their raw signals is possible, but it may be unnecessary for the decision we need to make.</p>
+<p>JEPA-Anything explores a shared learning principle across seven domains using domain-specific encoders, adapters and prediction targets. It does not demonstrate one universal pretrained model for all of them. It also distinguishes learning useful representations from retaining a predictor for operational use. That distinction matters. A good embedding alone is not an action-conditioned world model. <a class="citation" href="#ref-10" aria-label="Reference 10">[10]</a></p>
+<p>For a concrete sensor example, AD-LiST-JEPA explores LiDAR occupancy completion and forecasting. That is evidence for learning useful point-cloud predictions, not a complete autonomous controller. Geospatial change and industrial sensor forecasting are directions I would like to explore through the same question. What needs to be predicted for this particular decision? <a class="citation" href="#ref-11" aria-label="Reference 11">[11]</a></p>
+<p>My bet is that reusable foundations and domain-specific prediction will grow together. V-JEPA 2-AC shows one route, reusing a frozen encoder while learning an action-conditioned predictor. Other sensors or tasks may need a different representation. <a class="citation" href="#ref-7" aria-label="Reference 7">[7]</a> I care about making that adaptation accessible, so people can build and own useful intelligence for the worlds they actually work in.</p>
 
 <h2 id="references">References</h2>
 <ol class="references">
-<li id="ref-1"><a href="https://aclanthology.org/2023.tacl-1.1/" target="_blank" rel="noopener noreferrer">Siriwardhana et al. (2023). Improving the Domain Adaptation of Retrieval Augmented Generation (RAG) Models for Open Domain Question Answering. TACL.</a></li>
-<li id="ref-2"><a href="https://arxiv.org/abs/2005.14165" target="_blank" rel="noopener noreferrer">Brown et al. (2020). Language Models are Few-Shot Learners.</a></li>
-<li id="ref-3"><a href="https://arxiv.org/abs/2303.08774" target="_blank" rel="noopener noreferrer">OpenAI (2023). GPT-4 Technical Report.</a></li>
-<li id="ref-4"><a href="https://arxiv.org/abs/1803.10122" target="_blank" rel="noopener noreferrer">Ha and Schmidhuber (2018). World Models.</a></li>
-<li id="ref-5"><a href="https://www.nature.com/articles/s41586-025-08744-2" target="_blank" rel="noopener noreferrer">Hafner et al. (2025). Mastering diverse control tasks through world models. Nature.</a></li>
-<li id="ref-6"><a href="https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/" target="_blank" rel="noopener noreferrer">Google DeepMind (2025). Genie 3: A new frontier for world models.</a></li>
-<li id="ref-7"><a href="https://arxiv.org/abs/2509.24527" target="_blank" rel="noopener noreferrer">Hafner, Yan and Lillicrap (2025). Training Agents Inside of Scalable World Models (Dreamer 4).</a></li>
-<li id="ref-8"><a href="https://www.worldlabs.ai/blog/atlas" target="_blank" rel="noopener noreferrer">World Labs (2026). Atlas: A World Model for Spatial Intelligence.</a></li>
-<li id="ref-9"><a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/" target="_blank" rel="noopener noreferrer">METR (2025). Measuring AI Ability to Complete Long Software Tasks.</a></li>
-<li id="ref-10"><a href="https://arxiv.org/abs/2506.02153" target="_blank" rel="noopener noreferrer">Belcak et al. (2025). Small Language Models are the Future of Agentic AI.</a></li>
-<li id="ref-11"><a href="https://arxiv.org/abs/2310.16828" target="_blank" rel="noopener noreferrer">Hansen, Su and Wang (2024). TD-MPC2: Scalable, Robust World Models for Continuous Control.</a></li>
-<li id="ref-12"><a href="https://arxiv.org/abs/2506.09985" target="_blank" rel="noopener noreferrer">Assran et al. (2025). V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning.</a></li>
-<li id="ref-13"><a href="https://www.nist.gov/publications/enhancing-digital-twins-advances-simulation-and-artificial-intelligence-opportunities" target="_blank" rel="noopener noreferrer">Taylor et al. (2023). Enhancing Digital Twins with Advances in Simulation and Artificial Intelligence: Opportunities and Challenges. Winter Simulation Conference / NIST.</a></li>
-<li id="ref-14"><a href="https://nvidianews.nvidia.com/news/nvidia-launches-cosmos-world-foundation-model-platform-to-accelerate-physical-ai-development" target="_blank" rel="noopener noreferrer">NVIDIA (2025). NVIDIA Launches Cosmos World Foundation Model Platform to Accelerate Physical AI Development.</a></li>
-<li id="ref-15"><a href="https://arxiv.org/abs/2605.00080" target="_blank" rel="noopener noreferrer">Hou et al. (2026). World Model for Robot Learning: A Comprehensive Survey.</a></li>
-<li id="ref-16"><a href="https://arxiv.org/abs/2411.06559" target="_blank" rel="noopener noreferrer">Gu et al. (2025). Is Your LLM Secretly a World Model of the Internet? Model-Based Planning for Web Agents.</a></li>
-<li id="ref-17"><a href="https://arxiv.org/abs/2606.30639" target="_blank" rel="noopener noreferrer">Zhang et al. (2026). Self-Evolving World Models for LLM Agent Planning (WorldEvolver).</a></li>
-<li id="ref-18"><a href="https://arxiv.org/abs/2607.02642" target="_blank" rel="noopener noreferrer">GigaWorld Team et al. (2026). GigaWorld-1: A Roadmap to Build World Models for Robot Policy Evaluation.</a></li>
-<li id="ref-19"><a href="https://arxiv.org/abs/2501.03575" target="_blank" rel="noopener noreferrer">NVIDIA et al. (2025). Cosmos World Foundation Model Platform for Physical AI.</a></li>
-<li id="ref-20"><a href="https://arxiv.org/abs/2603.15759" target="_blank" rel="noopener noreferrer">Levy et al. (2026). Simulation Distillation: Pretraining World Models in Simulation for Rapid Real-World Adaptation (SimDist).</a></li>
-<li id="ref-21"><a href="https://proceedings.mlr.press/v331/lanier26a.html" target="_blank" rel="noopener noreferrer">Lanier et al. (2026, preprint 2025). Adapting World Models with Latent-State Dynamics Residuals (ReDRAW). L4DC / PMLR.</a></li>
-<li id="ref-22"><a href="https://arxiv.org/abs/2606.13674" target="_blank" rel="noopener noreferrer">Wang et al. (2026). RepWAM: World Action Modeling with Representation Visual-Action Tokenizers.</a></li>
+<li id="ref-1"><a href="https://www.forbes.com/councils/forbestechcouncil/2026/10/02/why-do-we-need-world-models-when-llms-exist-how-world-models-will-impact-physical-ai/" target="_blank" rel="noopener noreferrer">Yifeng Yin. Why Do We Need World Models When LLMs Exist? Forbes Technology Council, 2 October 2026.</a></li>
+<li id="ref-2"><a href="https://drfeifei.substack.com/p/from-words-to-worlds-spatial-intelligence" target="_blank" rel="noopener noreferrer">Fei-Fei Li. From Words to Worlds. 10 November 2025.</a></li>
+<li id="ref-3"><a href="https://www.worldlabs.ai/blog/taxonomy-of-world-models" target="_blank" rel="noopener noreferrer">World Labs. A Functional Taxonomy of World Models. 3 June 2026.</a></li>
+<li id="ref-4"><a href="https://metr.org/time-horizons/" target="_blank" rel="noopener noreferrer">METR. Task-Completion Time Horizons of Frontier AI Models. Ongoing research.</a></li>
+<li id="ref-5"><a href="https://research.nvidia.com/labs/cosmos-lab/cosmos3/" target="_blank" rel="noopener noreferrer">NVIDIA. Cosmos 3. 2026.</a> <a href="https://docs.nvidia.com/cosmos/latest/cosmos3/model_reference.html" target="_blank" rel="noopener noreferrer">Model reference.</a></li>
+<li id="ref-6"><a href="https://odyssey.systems/introducing-odyssey-3" target="_blank" rel="noopener noreferrer">Oliver Cameron and Jeff Hawke. Introducing Odyssey-3. 15 September 2026.</a></li>
+<li id="ref-7"><a href="https://arxiv.org/abs/2506.09985" target="_blank" rel="noopener noreferrer">Assran et al. V-JEPA 2. 2025.</a></li>
+<li id="ref-8"><a href="https://arxiv.org/abs/2610.10515" target="_blank" rel="noopener noreferrer">Zholus et al. RoboJEPA. 2026.</a></li>
+<li id="ref-9"><a href="https://amilabs.xyz/" target="_blank" rel="noopener noreferrer">AMI Labs. Research direction. Accessed 9 October 2026.</a></li>
+<li id="ref-10"><a href="https://arxiv.org/abs/2609.20800" target="_blank" rel="noopener noreferrer">Cui et al. JEPA-Anything. 2026.</a></li>
+<li id="ref-11"><a href="https://arxiv.org/abs/2602.12540" target="_blank" rel="noopener noreferrer">Zhu and Choromanska. Self-Supervised JEPA-based World Models for LiDAR Occupancy Completion and Forecasting. 2026.</a></li>
 </ol>
-<div class="article-end"><a href="/#corner">[ Back to all field notes ]</a><span>END OF LOG_001</span></div>
-
-</article>
+<div class="article-end"><a href="/#writing">[ Back to all field notes ]</a><span>END OF LOG_001</span></div>
+        </article>
       </div>
     </main>
   <footer class="footer footer-slim">

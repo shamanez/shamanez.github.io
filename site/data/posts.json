@@ -1,11 +1,11 @@
 [
   {
-    "title": "General Brains, Domain-Adapted Worlds",
+    "title": "LLMs, world models, and what comes next",
     "log": "001",
     "date": "2026-10-05",
     "tags": "WORLD MODELS / DOMAIN ADAPTATION / PHYSICAL AI",
-    "description": "Domain-adapted world models can improve simulations, digital twins and robot learning. One shared brain, locally grounded predictions.",
-    "readingTime": 10,
+    "description": "Where intelligence goes next, how LLMs and world models can work together, and why domain-specific prediction still matters.",
+    "readingTime": 7,
     "url": "/blog/general-brains-domain-adapted-worlds.html"
   }
 ]

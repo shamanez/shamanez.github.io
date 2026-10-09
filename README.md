@@ -10,16 +10,17 @@ Hosting policy: this is a personal website. Use the `shamanez` GitHub account an
 
 ## The design
 
-The site carries one idea: **foundational intelligence, for every domain**. Intelligence keeps changing, and so does the way it becomes domain specific. Shamane brings sovereign foundational intelligence that anyone can adapt and own. The copy stays short, and animated figures show the work.
+The site carries one idea: **intelligence, for everyone**. Across digital and physical worlds, intelligence anyone can adapt and own. The copy stays short, and animated figures show the work.
 
-The visual language follows Prime Intellect: a black field, hairline panels, uppercase mono labels, white square buttons, numbered navigation tabs and a single lime signal colour (`#85ed75`). Figures carry no figure numbers. Type is self-hosted Geist and Geist Mono. Copy avoids em-dashes, semicolons and mid-sentence colons.
+The visual language follows Prime Intellect: a black field, hairline panels, uppercase mono labels, white square buttons, numbered navigation tabs and a single lime signal colour (`#85ed75`). Essay figures use small numbered labels to make the progression easy to follow. Type is self-hosted Geist and Geist Mono. Copy avoids em-dashes, semicolons and mid-sentence colons.
 
 - **Hero.** A dot-matrix world map traces the journey from Sri Lanka to Singapore, Auckland, remote work with teams in Florida and San Francisco, and Melbourne. Peer GPUs join and exchange packets, and visitors can click the map to add a node. The terminal types `adapt.py` and cycles through domains before settling on `--domain=yours`.
 - **Domains ticker.** A scrolling list of domains the work has adapted models to.
 - **Built at.** The key organisations, each with a short role and one or two technical keywords, with the full timeline on LinkedIn.
 - **Story.** Ten cards. Each leads with its topic, then an animated figure, then one line: human-computer interaction at the Augmented Human Lab (people first, heterogeneous signals), computer vision in the CNN era (FingerReader), reinforcement learning (universal successor features, between model-free and model-based RL), self-supervised learning, end-to-end RAG (both DPR towers trained with the generator), domain-expert LLMs, decentralized pre-training, decentralized post-training, the efficient inference stack, and a queued “what comes next” card where an LLM asks a site-specific world model to simulate a plan before anything moves. It links to Log 001. The story plays forward by default, and a “Rewind from now” button turns the cards over and replays it from the newest work back to the start.
 - **Research.** A timeline chart built from the publication list, then curated clusters with recent work first and Shamane’s name highlighted in every author list. Research-impact numbers are deliberately left off.
-- **Writing and open source.** Field notes and the Pluralis post, then the open-source tools (ROLL × OpenReward, MergeKit, RAG-end2end, VUSFA) with real usage snippets.
+- **Writing.** A compact list of personal logs follows the hero and domain strip, before the career and research sections. Large cover images are omitted, and mobile previews show the title and reading metadata.
+- **Open source.** The Base to Reasoning walkthrough leads this section, followed by ROLL × OpenReward, MergeKit, RAG-end2end and VUSFA.
 - **Footer.** Dot-matrix lettering that responds to the pointer, and links to Google Scholar, LinkedIn, X and GitHub.
 
 Motion pauses offscreen and follows `prefers-reduced-motion`, and the **Motion** toggle (saved per visitor) freezes everything in its final state. The pages need no framework, tracking script or CMS. The map is `site/assets/world.png`, a 4 KB land mask rasterised from public-domain Natural Earth data. `site/assets/og.png` is the 1200×630 social preview.
@@ -28,9 +29,9 @@ Motion pauses offscreen and follows `prefers-reduced-motion`, and the **Motion**
 
 Authored files live in `site/`. Edit `site/index.html` for the story, research clusters, writing links and open-source cards. Edit `site/assets/` for presentation and interactions, and `site/blog/*.html` for posts. `scripts/build.mjs` does the rest:
 
-- generates the field-note cards (with covers) and reading times from each post.
+- generates compact field-note previews, reading times and the latest-post announcement from each post.
 - lists any Scholar paper from the newest curated year that is not yet in a cluster, under “New on Google Scholar”.
-- fingerprints `style.css` and `site.js` so a deploy never mixes old assets with new pages.
+- fingerprints authored CSS and JavaScript assets so a deploy never mixes old assets with new pages.
 - copies the published content to `_site/`. Drafts are omitted from both the index and the deployed files.
 
 To add a paper to a cluster, copy an existing `<li class="paper">` in `site/index.html`. Set `data-date="YYYY-MM"` and `data-venue` so it also appears on the timeline, and wrap Shamane’s name in `<strong class="me">`.
@@ -51,4 +52,4 @@ GitHub Pages serves `_site/` at the root URL `https://shamanez.github.io/`. `.gi
 
 For the first deployment, create the public repository `shamanez/shamanez.github.io`, push this source to `main`, and choose **GitHub Actions** under the repository’s **Settings → Pages → Build and deployment → Source**. The deploy workflow then publishes the website.
 
-Log 001 is refined from the author’s supplied v2 PDF, originally dated 5 October 2026. At the author’s request, a research agent reviewed its claims using primary sources. The article explains how learned world models can improve simulations and digital twins, distinguishes domain/task/site adaptation, and qualifies transfer, model-size, and latency claims while preserving the author’s architectural thesis. Its 22 references and editorial provenance are recorded in `content/log-001-editorial.json`.
+Log 001 is refined from the author’s supplied v2 PDF, originally dated 5 October 2026. Revised on 9 October 2026 by a separate research and editorial agent team at the author’s request, it explores how LLMs, generative worlds and latent predictors could coexist, and where domain adaptation fits. Three responsive figures explain the learning approaches, feedback loop and a possible system composition. Important sources and claim checks are recorded in `content/log-001-editorial.json`. The original article URL remains stable.

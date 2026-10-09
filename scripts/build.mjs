@@ -36,30 +36,20 @@ if (new Set(posts.map(post => post.log)).size !== posts.length) throw new Error(
 posts.sort((a, b) => b.date.localeCompare(a.date) || b.log.localeCompare(a.log));
 await writeFile(join(publicDir, 'data/posts.json'), JSON.stringify(posts, null, 2) + '\n');
 
-// A generated dot-matrix cover per log: one hub, linked to three small worlds.
-function cover(post) {
-  let seed = Number(post.log) * 2654435761 >>> 0;
-  const random = () => { seed = (seed + 0x6d2b79f5) >>> 0; let t = Math.imul(seed ^ (seed >>> 15), 1 | seed); t ^= t + Math.imul(t ^ (t >>> 7), 61 | t); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
-  const hub = [356 + Math.round(random() * 24), 112 + Math.round(random() * 24)];
-  const worlds = [[300, 206], [432, 196], [420, 50]].map(([x, y]) => [x + Math.round(random() * 16 - 8), y + Math.round(random() * 12 - 6)]);
-  const cells = worlds.map(([x, y]) => Array.from({ length: 9 }, (_, i) => `<rect x="${x + (i % 3) * 6 - 7}" y="${y + Math.floor(i / 3) * 6 - 7}" width="4" height="4" fill="${random() > 0.55 ? '#85ed75' : 'rgba(255,255,255,.55)'}"/>`).join('')).join('');
-  const links = worlds.map(([x, y]) => `<path d="M${hub[0]} ${hub[1]}L${x} ${y}" stroke="rgba(133,237,117,.55)" stroke-dasharray="3 4"/>`).join('');
-  return `<svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid slice"><defs><pattern id="dots-log${post.log}" width="12" height="12" patternUnits="userSpaceOnUse"><rect width="1.4" height="1.4" fill="rgba(255,255,255,.13)"/></pattern></defs><rect width="480" height="270" fill="url(#dots-log${post.log})"/><text x="24" y="40" font-size="10.5" fill="rgba(255,255,255,.55)" letter-spacing="1.2">SHAMANE’S CORNER · LOG</text><text x="16" y="172" font-size="116" fill="#fff" letter-spacing="-6">${post.log}</text>${links}${cells}<rect x="${hub[0] - 6}" y="${hub[1] - 6}" width="12" height="12" fill="#85ed75"/><rect class="cover-pulse" x="${hub[0] - 13.5}" y="${hub[1] - 13.5}" width="27" height="27" fill="none" stroke="#85ed75" stroke-opacity=".5"/><text x="24" y="246" font-size="10" fill="rgba(255,255,255,.55)" letter-spacing="1.1">${escape(post.tags)}</text></svg>`;
-}
-
-// Real HTML links, so the writing index also works without JavaScript.
+// Compact, real HTML links keep the writing index readable without JavaScript.
 const blogIndex = posts.map((post, index) => `        <a class="post-card" href="${escape(post.url)}" data-reveal style="--i:${index}">
-          <div class="post-cover" aria-hidden="true">${cover(post)}</div>
+          <div class="post-number"><span>Log</span><strong>${post.log}</strong></div>
           <div class="post-body">
-            <div class="post-meta"><span class="post-tag">Log ${post.log} · Shamane’s Corner</span><time datetime="${post.date}">${displayDate(post.date + 'T12:00:00Z')}</time></div>
+            <div class="post-meta"><time datetime="${post.date}">${displayDate(post.date + 'T12:00:00Z')}</time><span>${post.readingTime} min read</span></div>
             <h3>${escape(post.title)}</h3>
             <p>${escape(post.description)}</p>
-            <span class="post-foot">${post.readingTime} min read · Read log ${post.log} <span class="chev" aria-hidden="true">›</span></span>
           </div>
+          <span class="post-open">Read <span class="chev" aria-hidden="true">›</span></span>
         </a>`).join('\n');
 
 const indexPath = join(publicDir, 'index.html');
 let indexHtml = replaceBetween(await readFile(indexPath, 'utf8'), 'BLOG_INDEX', blogIndex);
+if (posts.length) indexHtml = indexHtml.replace(/(<div class="announce">[\s\S]*?<a href=")[^"]*("><span class="announce-tag">New log<\/span><span class="announce-text">)[^<]*(<\/span>)/, (_, before, middle, after) => `${before}${escape(posts[0].url)}${middle}${escape(posts[0].title)}${after}`);
 
 // Newly indexed papers come from the refreshed (or snapshot) Scholar feed.
 const scholar = JSON.parse(await readFile(join(publicDir, 'data/scholar.json'), 'utf8'));
@@ -92,7 +82,8 @@ for (const filename of await readdir(join(outputDir, 'blog'))) {
 }
 // Fingerprint the stylesheet and script so a redeploy never mixes old assets with new pages.
 const fingerprint = async file => createHash('sha256').update(await readFile(join(outputDir, file))).digest('hex').slice(0, 10);
-const versions = { 'assets/style.css': await fingerprint('assets/style.css'), 'assets/site.js': await fingerprint('assets/site.js') };
+const versionedAssets = (await readdir(join(outputDir, 'assets'))).filter(file => /\.(css|js)$/.test(file));
+const versions = Object.fromEntries(await Promise.all(versionedAssets.map(async file => [`assets/${file}`, await fingerprint(`assets/${file}`)])));
 for (const page of pages) {
   const path = join(outputDir, page);
   let html = await readFile(path, 'utf8');
