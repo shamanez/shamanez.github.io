@@ -6,7 +6,7 @@
   "publicationDate": "2026-10-05",
   "refinementDate": "2026-10-09",
   "canonicalUrl": "https://shamanez.github.io/blog/general-brains-domain-adapted-worlds.html",
-  "userDirection": "Explain where intelligence goes next, how language models and different world-model functions coexist, and why domain-specific prediction matters. Preserve the author’s concise personal tone, avoid em dashes and colons in visible prose, replace the simulator/digital-twin table and rigid model-per-site proposal with explanatory figures, and cite only important sources. The first section is Frontier foundation models. Within it, the frontier-scale SSL/foundation/LLM/omni progression comes first. Long-horizon digital agents follow as systems built on that base intelligence, with further scaling through RL and OPD. That entire section omits world-model discussion. World models are introduced only in a separate following section.",
+  "userDirection": "Explain where intelligence goes next, how language models and different world-model functions coexist, and why domain-specific prediction matters. Preserve the author’s concise personal tone, avoid em dashes and colons in visible prose, replace the simulator/digital-twin table and rigid model-per-site proposal with explanatory figures, and cite only important sources. The first section is Frontier foundation models. Within it, the frontier-scale SSL/foundation/LLM/omni progression comes first. Long-horizon digital agents follow as systems built on that base intelligence, with further scaling through RL and OPD. That entire section omits world-model discussion. World models are introduced only in a separate following section. The domain-adaptation section compares V-JEPA 2-AC, JEPA-Anything and AD-LiST-JEPA in a concise animated figure and explains why each was selected. Clarify JEPA-Anything’s orthogonal predictive factorization and assess its evidence with appropriate limits.",
   "researchAndEditorialReview": {
     "prose": "Separate essay_editor agent at the author’s explicit request",
     "latentResearch": "Separate latent_model_research agent verified primary papers and AMI Labs",
@@ -31,9 +31,10 @@
     "Authored visible prose and figure text contain no em dashes or colons. Reference labels are concise descriptive titles linked to their exact sources.",
     "At the author’s request, Frontier foundation models is the first main section. From self-supervised learning to omni models and General models, longer work are subsections within it, in that order. A transition connects long-horizon agents to the underlying base intelligence. World models and their main approaches follows as a separate main section. Existing section anchors remain valid.",
     "The foundation-model section and figure strictly omit world models. They emphasize frontier-scale datasets, model size and compute without asserting all foundation or omni models must be large. LLMs and omni models are identified as foundation-model forms.",
-    "Four figures now explain frontier foundation models, evaluated post-training feedback, two overlapping world-model groupings, and a possible combined system. Generative/spatial and latent predictive models are discussion groupings, not an exhaustive or mutually exclusive taxonomy.",
+    "Five figures now explain frontier foundation models, evaluated post-training feedback, two overlapping world-model groupings, a possible combined system, and three complementary domain-adaptation papers. Generative/spatial and latent predictive models are discussion groupings, not an exhaustive or mutually exclusive taxonomy.",
     "RL is described as learning from task rewards. OPD is expanded as on-policy distillation, where the student generates trajectories and a teacher provides guidance on those trajectories. These are distinct feedback mechanisms and neither is claimed to improve automatically or to eliminate reliability problems.",
-    "Redrew Different jobs, one system to make the LLM, generative/spatial world models and latent predictive world models explicit. Labeled request and return paths connect both world-model branches to shared planning, followed by control and observed feedback. Generated scenarios can support policy development or planning; action-conditioned latent predictions inform decisions when runtime permits. The figure is a possible composition, not a demonstrated universal architecture, and does not require every model to run for every action."
+    "Redrew Different jobs, one system to make the LLM, generative/spatial world models and latent predictive world models explicit. Labeled request and return paths connect both world-model branches to shared planning, followed by control and observed feedback. Generated scenarios can support policy development or planning; action-conditioned latent predictions inform decisions when runtime permits. The figure is a possible composition, not a demonstrated universal architecture, and does not require every model to run for every action.",
+    "Re-read the three primary papers for the domain-adaptation revision. Figure 05 explains the selection rationale through reuse, prediction structure and sensor-specific learning. All three summaries remain visible; motion traces predictive flow, respects reduced-motion preferences and can be paused with the site-wide motion control. Existing publication and section anchors remain stable."
   ],
   "sources": [
     {
@@ -77,7 +78,10 @@
     {
       "title": "Assran et al. V-JEPA 2",
       "url": "https://arxiv.org/abs/2506.09985",
-      "supportedClaim": "V-JEPA 2-AC learns an action-conditioned predictor over a frozen video encoder and demonstrates goal-conditioned robot planning."
+      "supportedClaim": "V-JEPA 2-AC learns an action-conditioned predictor over a frozen video encoder and demonstrates goal-conditioned robot planning.",
+      "corroboratingUrls": [
+        "https://arxiv.org/html/2506.09985v1"
+      ]
     },
     {
       "title": "Zholus et al. RoboJEPA",
@@ -95,13 +99,25 @@
       "title": "Cui et al. JEPA-Anything",
       "url": "https://arxiv.org/abs/2609.20800",
       "date": "2026-09-17",
-      "supportedClaim": "A shared predictive learning framework instantiated in seven domains with domain-specific adapters, encoders and context-target choices, distinguishing representation and operational modes."
+      "supportedClaim": "A shared predictive learning framework instantiated in seven domains with domain-specific adapters, encoders and context-target choices, distinguishing representation and operational modes.",
+      "corroboratingUrls": [
+        "https://arxiv.org/html/2609.20800v1"
+      ],
+      "reviewedSections": [
+        "2.2 Orthogonal Predictive Factorization",
+        "2.4 Shared Predictive Pretraining and Task-Specific Readout",
+        "3.3.3 Continuous-Control Planning",
+        "4 Related Work"
+      ]
     },
     {
       "title": "Zhu and Choromanska. Self-Supervised JEPA-based World Models for LiDAR Occupancy Completion and Forecasting",
       "url": "https://arxiv.org/abs/2602.12540",
       "date": "2026-02-13",
-      "supportedClaim": "AD-LiST-JEPA learns point-cloud representations evaluated for occupancy completion and forecasting; no claimed complete autonomous controller."
+      "supportedClaim": "AD-LiST-JEPA learns point-cloud representations evaluated for occupancy completion and forecasting; no claimed complete autonomous controller.",
+      "corroboratingUrls": [
+        "https://arxiv.org/html/2602.12540v1"
+      ]
     },
     {
       "title": "DeepSeek-AI. DeepSeek-R1",

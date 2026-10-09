@@ -69,7 +69,7 @@
         <p class="eyebrow purple">LOG 001 / WORLD MODELS / DOMAIN ADAPTATION / PHYSICAL AI</p>
         <h1>LLMs, world models,<br>and what comes next.</h1>
         <p class="article-deck">LLMs keep getting better. I think the next question is how their intelligence connects to the worlds where we use it.</p>
-        <div class="article-byline"><span>Shamane Siriwardhana</span><time datetime="2026-10-05">05 October 2026</time><span>Updated <time datetime="2026-10-09">09 October 2026</time></span><span data-reading-time>8 min read</span></div>
+        <div class="article-byline"><span>Shamane Siriwardhana</span><time datetime="2026-10-05">05 October 2026</time><span>Updated <time datetime="2026-10-09">09 October 2026</time></span><span data-reading-time>9 min read</span></div>
       </header>
       <div class="article-layout">
         <nav class="article-toc" aria-label="In this essay"><p>IN THIS LOG</p><a href="#frontier-foundation-models">Frontier foundation models</a><a href="#world-models">World models and their main approaches</a><a href="#different-jobs">Different jobs, one system</a><a href="#domain-specific">Where domain adaptation goes next</a><a href="#references">References</a></nav>
@@ -202,10 +202,47 @@
 <p>The connection still needs work. Goals, observations and actions need compatible interfaces. Prediction errors grow over longer rollouts. And a useful deployment has to fit the latency and reliability requirements of the actual system.</p>
 
 <h2 id="domain-specific">Where domain adaptation goes next</h2>
-<p>This is the part I want to work on. A warehouse camera, a LiDAR point cloud, a satellite image and a machine’s sensor stream expose different information. Predicting their raw signals is possible, but it may be unnecessary for the decision we need to make.</p>
-<p>JEPA-Anything explores a shared learning principle across seven domains using domain-specific encoders, adapters and prediction targets. It does not demonstrate one universal pretrained model for all of them. It also distinguishes learning useful representations from retaining a predictor for operational use. That distinction matters. A good embedding alone is not an action-conditioned world model. <a class="citation" href="#ref-10" aria-label="Reference 10">[10]</a></p>
-<p>For a concrete sensor example, AD-LiST-JEPA explores LiDAR occupancy completion and forecasting. That is evidence for learning useful point-cloud predictions, not a complete autonomous controller. Geospatial change and industrial sensor forecasting are directions I would like to explore through the same question. What needs to be predicted for this particular decision? <a class="citation" href="#ref-11" aria-label="Reference 11">[11]</a></p>
-<p>My bet is that reusable foundations and domain-specific prediction will grow together. V-JEPA 2-AC shows one route, reusing a frozen encoder while learning an action-conditioned predictor. Other sensors or tasks may need a different representation. <a class="citation" href="#ref-7" aria-label="Reference 7">[7]</a> I care about making that adaptation accessible, so people can build and own useful intelligence for the worlds they actually work in.</p>
+<p>This is the part I want to work on. I picked these three papers because they ask different questions about domain adaptation. What can we reuse? How should we structure prediction? What changes when the sensor changes?</p>
+<figure class="essay-figure ef-papers" id="figure-domain-papers" aria-labelledby="figure-domain-papers-caption">
+  <div class="ef-head"><span class="ef-id">05 / Why these three papers</span><button class="motion-toggle" type="button" aria-pressed="true">Motion on</button></div>
+  <div class="ef-paper">
+    <div class="ef-paper-heading"><span class="ef-label">Reuse a foundation</span><h3><a href="#ref-7">V-JEPA 2-AC <span>[7]</span></a></h3></div>
+    <div class="ef-paper-flow">
+      <div class="ef-paper-step"><strong>Video encoder</strong><small>Keep it frozen</small></div>
+      <span class="ef-paper-arrow" aria-hidden="true">→</span>
+      <div class="ef-paper-step"><strong>Action predictor</strong><small>Learn from robot data</small></div>
+      <span class="ef-paper-arrow" aria-hidden="true">→</span>
+      <div class="ef-paper-step"><strong>Robot planning</strong><small>Compare possible movements</small></div>
+    </div>
+    <p class="ef-paper-why"><strong>Why here</strong> It shows how broad visual learning can support specialized action prediction.</p>
+  </div>
+  <div class="ef-paper">
+    <div class="ef-paper-heading"><span class="ef-label">Structure the prediction</span><h3><a href="#ref-10">JEPA-Anything <span>[10]</span></a></h3></div>
+    <div class="ef-paper-flow">
+      <div class="ef-paper-step"><strong>Encoded context</strong><small>Domain inputs</small></div>
+      <span class="ef-paper-arrow" aria-hidden="true">→</span>
+      <div class="ef-paper-step ef-factor-step"><strong>Predict factors</strong><div class="ef-factors" aria-label="Illustrative parallel factor predictions"><span>F₁</span><span>F₂</span><span>F₃</span></div><small>Learned latent subspaces</small></div>
+      <span class="ef-paper-arrow" aria-hidden="true">→</span>
+      <div class="ef-paper-step"><strong>Combine</strong><small>A predicted latent state</small></div>
+    </div>
+    <p class="ef-paper-why"><strong>Why here</strong> It tests a shared predictive design across seven domains.</p>
+  </div>
+  <div class="ef-paper">
+    <div class="ef-paper-heading"><span class="ef-label">Change the sensor</span><h3><a href="#ref-11">AD-LiST-JEPA <span>[11]</span></a></h3></div>
+    <div class="ef-paper-flow">
+      <div class="ef-paper-step"><strong>LiDAR frames</strong><small>Align and mask across time</small></div>
+      <span class="ef-paper-arrow" aria-hidden="true">→</span>
+      <div class="ef-paper-step"><strong>JEPA training</strong><small>Pretrain on point clouds</small></div>
+      <span class="ef-paper-arrow" aria-hidden="true">→</span>
+      <div class="ef-paper-step"><strong>Occupancy</strong><small>Fine-tune for completion and forecasts</small></div>
+    </div>
+    <p class="ef-paper-why"><strong>Why here</strong> It tests sensor-specific learning beyond video. The evidence is occupancy completion and forecasting.</p>
+  </div>
+  <figcaption id="figure-domain-papers-caption">Three complementary questions. Simplified flows with an illustrative factor count.</figcaption>
+</figure>
+<p>JEPA-Anything adds <strong>orthogonal predictive factorization</strong>. It learns complementary latent subspaces, predicts each through a separate branch, then combines them. Orthogonality encourages different latent directions. It does not guarantee independent real-world causes. The domain still determines the encoder, inputs and targets. <a class="citation" href="#ref-10" aria-label="Reference 10">[10]</a></p>
+<p>I find that promising. The paper reports gains in forecasting and intervention prediction, while control results are mixed. It offers a common training design across domains. It does not establish one universal pretrained checkpoint. Some uses retain only encoder features. Operational predictions retain the predictive machinery. <a class="citation" href="#ref-10" aria-label="Reference 10">[10]</a></p>
+<p>Together, these papers help me separate reusable learning from the work a domain still needs. A useful representation, a forecast and an action model are different capabilities. My bet is that we will reuse foundations where they transfer, then adapt the sensors, prediction targets and dynamics where they do not. I want that adaptation to be something people can build and own.</p>
 
 <h2 id="references">References</h2>
 <ol class="references">
